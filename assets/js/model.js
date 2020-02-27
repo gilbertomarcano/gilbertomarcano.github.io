@@ -1,6 +1,20 @@
 class Model {
     constructor() {
         this.availableSubjects = new Array()
+        this.generatedSchedules = Array()
+        this.generator = new ScheduleGenerator()
+
+    }
+
+    generateSchedules() {
+        // Update the list of the generator
+        this.generator.update(this.getSelectedSubjects())
+        // Start the generator
+        this.generator.start()
+        this.generatedSchedules = [...this.generator.generatedSchedules] 
+        console.log(this.generatedSchedules)
+
+
     }
 
     // DELETE ??
@@ -25,11 +39,5 @@ class Model {
         })
     }
     
-    start() {
-        const generator = new ScheduleGenerator(this.getSelectedSubjects())
-        console.log(generator.generatedSchedules)
-        generator.start()
-        console.log(generator.generatedSchedules)
-
-    }
+    
 }
