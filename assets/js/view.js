@@ -2,12 +2,12 @@ class View {
     constructor() {
         // The root element
         this.app = this.getElement('#root')
-        
+
         // The select forms
         this.selectAvailableSubjects = document.getElementById('available-subjects-select')
         this.selectSelectedSubjects = document.getElementById('selected-subjects-select')
 
-        
+
 
     }
 
@@ -22,6 +22,8 @@ class View {
             const name = item.subject.name
             const element = this.createElement('option', name)
 
+
+
             // Assign to the correspond select form
             if (item.selected) {
                 this.selectSelectedSubjects.appendChild(element)
@@ -31,10 +33,41 @@ class View {
         })
     }
 
-    
+    loadNewSelect(subjectList = new Array()) {
+
+        subjectList.forEach(item => {
+            this.appendChildToDiv(item.subject)
+        })
+
+    }
+
+    appendChildToDiv(subject) {
+        // Create the elements with its values and classes
+        const div = this.createElement('div', null, 'option')
+        const input = this.createElement('input', null, 'radio')
+        const label = this.createElement('label', subject.name, null)
+
+        // Create attributes for the input element
+        const type = this.createAttribute('type', 'radio')
+        const name = this.createAttribute('name', 'category')
+
+        // Set attributes for the input element
+        input.setAttributeNode(type)
+        input.setAttributeNode(name)
+
+        // Append the childs for the div element
+        div.appendChild(input)
+        div.appendChild(label)
+
+        // Append the div to the main div
+        const availableSubjects = document.getElementById('available-subjects')
+        availableSubjects.appendChild(div)
+    }
+
+
     clearSelect(select) {
-        for(let i = select.options.length - 1 ; i >= 0 ; i--) {
-            select.remove(i);    
+        for (let i = select.options.length - 1; i >= 0; i--) {
+            select.remove(i);
         }
     }
 
@@ -52,7 +85,7 @@ class View {
                     weekday.removeChild(weekday.firstChild)
                 }
             }
-            
+
         }
     }
 
@@ -84,17 +117,17 @@ class View {
     }
 
     createDayEvent(subject, day, weekdayid) {
+        // Creating the li element
         const li = document.createElement('li')
         li.classList.add('cd-schedule__event')
-        
+
+        // Creating the em element 
         const em = document.createElement('em')
         em.classList.add('cd-schedule__name')
         em.textContent = subject.name
         em.value = subject.name
 
-        console.log('created a li', li)
-        console.log('created a em', em)
-
+        // Creating the a element and its attributes
         const a = this.createElement('a')
         const dataStart = this.createAttribute('data-start', this.intToDate(day.hours[0]))
         const dataEnd = this.createAttribute('data-end', this.intToDate(day.hours[day.hours.length - 1] + 1))
@@ -102,24 +135,25 @@ class View {
         const dataEvent = this.createAttribute('data-event', 'event-1')
         const href = this.createAttribute('href', '#0')
 
+        // Set attributes
         a.setAttributeNode(dataStart)
         a.setAttributeNode(dataEnd)
         a.setAttributeNode(dataContent)
         a.setAttributeNode(dataEvent)
         a.setAttributeNode(href)
 
+        // Append everything to the correspond element
         a.appendChild(em)
 
-        console.log('created a', a)
         li.appendChild(a)
-        console.log('added to ', weekdayid)
+
+        // Getting the correct ul element and append the li
         const weekday = document.getElementById(weekdayid)
-        console.log(weekday)
-        console.log('========================')
 
         weekday.appendChild(li)
     }
 
+    // Create an attribute
     createAttribute(tag, value) {
         const attribute = document.createAttribute(tag)
         attribute.value = value
@@ -127,14 +161,13 @@ class View {
         return attribute
     }
 
-    // Create an element with an optional CSS class
+    // Create an element with its value and CSS class
     createElement(tag, value, className) {
         const element = document.createElement(tag)
         if (value) {
             element.textContent = value
             element.value = value
         }
-        
 
         if (className) element.classList.add(className)
 
@@ -142,11 +175,11 @@ class View {
     }
 
     // Retrieve an element from the DOM
-	getElement(selector) {
-		const element = document.querySelector(selector)
+    getElement(selector) {
+        const element = document.querySelector(selector)
 
-		return element
-	}
+        return element
+    }
 
     getSelectValue() {
         return this.selectAvailableSubjects.value

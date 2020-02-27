@@ -14,6 +14,7 @@ class Controller {
 
         // Reload de select
         this.view.reloadSelect(this.model.availableSubjects)
+        this.view.loadNewSelect(this.model.availableSubjects)
     }
 
     start() {
