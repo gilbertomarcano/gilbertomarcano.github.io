@@ -34,12 +34,31 @@ class View {
     }
 
     loadNewSelect(subjectList = new Array()) {
-
         subjectList.forEach(item => {
-            this.appendChildToDiv(item.subject)
+            if (!item.selected) {
+                const name = item.subject.name
+                const select = document.getElementById('dropdown')
+                this.appendChildSelect(select, name)
+            } else {
+                console.log(item, 'not appended')
+            }
+            
         })
 
     }
+
+    /**
+     * Append an option with the name of a subject to a dropdown select
+     * @param {*} select the select that is going to be extended
+     * @param {*} name the name of the subject to be appended
+     */
+    appendChildSelect(select, name) {
+        // Create and append the element
+        const element = this.createElement('option', name)
+        select.appendChild(element)
+    }
+
+
 
     appendChildToDiv(subject) {
         // Create the elements with its values and classes
@@ -183,6 +202,15 @@ class View {
 
     getSelectValue() {
         return this.selectAvailableSubjects.value
+    }
+
+    /**
+     * Returns the name of a subject in a select dropdown
+     * @param {*} select 
+     */
+    getSelectedSubject(select) {
+        const name = select.value
+        return name
     }
 
 

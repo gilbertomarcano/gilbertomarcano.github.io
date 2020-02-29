@@ -5,6 +5,8 @@ class Controller {
 
         this.selectedSchedule = 0
         this.schedule = new Schedule()
+
+        this.availableSubjects = document.getElementById('dropdown')
     }
 
     init() {
@@ -13,7 +15,7 @@ class Controller {
         database_fill_subject_list(data, this.model.availableSubjects)
 
         // Reload de select
-        this.view.reloadSelect(this.model.availableSubjects)
+        //this.view.reloadSelect(this.model.availableSubjects)
         this.view.loadNewSelect(this.model.availableSubjects)
     }
 
@@ -27,7 +29,30 @@ class Controller {
         //this.view.createSubjectEvent(item)
     }
 
-    loadNext() {
+    /**
+     * Controls which subject is selected
+     */
+    selectSubject() {
+        // Get the name of the subject
+        const name = document.getElementById('choice').textContent
+        if (name != "Please choose") {
+            console.log(name)
+            this.model.selectSubject(name)
+
+        } else {
+            alert('Select a subject')
+        }
+        //this.view.clearSelect(this.view.selectAvailableSubjects)
+        //this.view.clearSelect(this.view.selectSelectedSubjects)
+
+        //this.view.reloadSelect(this.model.availableSubjects)
+    }
+    
+    getSubjectByName(name) {
+        
+    }
+
+    nextSchedule() {
         if (this.selectedSchedule < this.model.generator.generatedSchedules.length - 1) {
             this.view.clearList()
             this.selectedSchedule++
@@ -36,7 +61,7 @@ class Controller {
         
     }
 
-    loadPrev() {
+    prevSchedule() {
         if (this.selectedSchedule > 0) {
             this.view.clearList()
             this.selectedSchedule--
@@ -44,14 +69,5 @@ class Controller {
         }
     }
 
-    buttonSelect() {
-        const selectedName = this.view.getSelectValue()
-        if (selectedName) {
-            this.model.selectSubject(selectedName)
-        }
-        this.view.clearSelect(this.view.selectAvailableSubjects)
-        this.view.clearSelect(this.view.selectSelectedSubjects)
-
-        this.view.reloadSelect(this.model.availableSubjects)
-    }
+    
 }

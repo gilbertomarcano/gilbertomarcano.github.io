@@ -30,12 +30,18 @@ class Model {
         return selectedSubjects
     }
 
-    selectSubject(selectedName) {
+    selectSubject(name) {
         this.availableSubjects.forEach(item => {
-            if (item.subject.name == selectedName) {
+            if (item.subject.name == name) {
                 item.selected = true
                 return
             }
+        })
+    }
+
+    getSubjectByName(name) {
+        this.availableSubjects.forEach(item => {
+            if (item)
         })
     }
     

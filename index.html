@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
   <link rel="stylesheet" href="assets/css/dropdown.css">
-  <link rel="stylesheet" href="assets/css/select.css">
-
 
   <title>Document</title>
 </head>
 
 <body>
+  <label class="switch">
+    <input type="checkbox">
+    <span>Light</span>
+  </label>
+
   <h1>Dropdown Test</h1>
   <label for="subjectSelect">Subjects:</label>
 
@@ -21,7 +24,7 @@
   </form>
 
 
-  <input type="button" onclick="app.buttonSelect()" value="Select subject">
+  <input type="button" onclick="app.selectSubject()" value="Select subject">
   <br><br>
   <label>Please choose one or more pets: <br>
     <select id="selected-subjects-select" multiple size="6">
@@ -31,8 +34,8 @@
   <br><br>
   <input type="button" onclick="app.start()" value="Generate Schedule">
   <br>
-  <input type="button" onclick="app.loadPrev()" value="Previus Schedule">
-  <input type="button" onclick="app.loadNext()" value="Next Schedule">
+  <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
+  <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
 
   <!-- THIS END MY CODE -->
 
@@ -44,26 +47,16 @@
 
 
 
-
-  <select class="dropdown" placeholder="Please choose">
-    <option>List entry #1</option>
-    <option>List entry #2</option>
-    <option>List entry #3</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
-    <option>List entry #4</option>
+  <select class="dropdown" placeholder="Please choose" id="dropdown">
+    <!--<option>List entry #1</option>-->
   </select>
 
-  <label class="switch">
-    <input type="checkbox">
-    <span>Light</span>
-  </label>
 
+  <br><br><br><br><br><br>
+  <br><br><br><br><br><br>
+
+
+ 
 
 
 
@@ -323,8 +316,6 @@
   <script src="assets/js/controller.js"></script>
   <script src="assets/js/script.js"></script>
 
-  <script src="assets/js/select.js"></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script>
     $('select.dropdown').each(function () {
@@ -334,6 +325,7 @@
       $(this).wrap(dropdown);
 
       var label = $('<span />').text($(this).attr('placeholder')).insertAfter($(this));
+      label.attr('id', 'choice')
       var list = $('<ul />');
 
       $(this).find('option').each(function () {
