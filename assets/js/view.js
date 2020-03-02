@@ -7,42 +7,23 @@ class View {
         this.selectAvailableSubjects = document.getElementById('available-subjects-select')
         this.selectSelectedSubjects = document.getElementById('selected-subjects-select')
 
+        this.totalSubjects = 0
+
+
 
 
     }
 
 
-    /**
-     * Reload the select forms
-     * @param {*} subjectList 
-     */
-    reloadSelect(subjectList = new Array()) {
-        // Assign to a new option element the name of each subject
-        subjectList.forEach(item => {
-            const name = item.subject.name
-            const element = this.createElement('option', name)
-
-
-
-            // Assign to the correspond select form
-            if (item.selected) {
-                this.selectSelectedSubjects.appendChild(element)
-            } else {
-                this.selectAvailableSubjects.appendChild(element)
-            }
-        })
+    getSelectedIndex() {
+        const index = document.getElementById('dropdown').getAttribute('selected')
+        return index
     }
 
-    loadNewSelect(subjectList = new Array()) {
-        subjectList.forEach(item => {
-            if (!item.selected) {
-                const name = item.subject.name
-                const select = document.getElementById('dropdown')
-                this.appendChildSelect(select, name)
-            } else {
-                console.log(item, 'not appended')
-            }
-            
+    loadSelect(select, subjects = new Array()) {
+        subjects.forEach(subject => {
+            const name = subject.name
+            this.appendChildToSelect(select, name)
         })
 
     }
@@ -52,9 +33,13 @@ class View {
      * @param {*} select the select that is going to be extended
      * @param {*} name the name of the subject to be appended
      */
-    appendChildSelect(select, name) {
+    appendChildToSelect(select, name) {
         // Create and append the element
         const element = this.createElement('option', name)
+        const id = this.createAttribute('id', this.totalSubjects.toString())
+        this.totalSubjects += 1
+
+        element.setAttributeNode(id)
         select.appendChild(element)
     }
 
@@ -231,4 +216,6 @@ class View {
             default: break
         }
     }
+
+
 }

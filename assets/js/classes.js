@@ -86,14 +86,15 @@ class Schedule {
 }
 
 class ScheduleGenerator {
-    constructor(subjects = new Array()) {
+    /**
+     * Constructor of the generator
+     * @param {Array} subjects - the array of subjects with which the generator will proceed 
+     */
+    constructor(subjects) {
+        console.log('generator with', subjects)
         this.subjects = subjects
         this.generatedSchedules = new Array()
         this.tempSchedule = new Schedule()
-    }
-
-    update(subjects) {
-        this.subjects = subjects
     }
 
     /**
@@ -150,7 +151,7 @@ function database_get() {
 function database_fill_subject_list(content, subjectList) {
     var subjects = content.split('?')
     subjects.forEach(subject => {
-        subjectList.push({subject: database_read_subject(subject), selected: false})
+        subjectList.push(database_read_subject(subject))
     })
 }
 

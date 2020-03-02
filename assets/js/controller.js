@@ -6,8 +6,9 @@ class Controller {
         this.selectedSchedule = 0
         this.schedule = new Schedule()
 
-        this.availableSubjects = document.getElementById('dropdown')
+        this.dropdown = document.getElementById('dropdown')
     }
+
 
     init() {
         // Get data for model from the database 
@@ -15,8 +16,8 @@ class Controller {
         database_fill_subject_list(data, this.model.availableSubjects)
 
         // Reload de select
-        //this.view.reloadSelect(this.model.availableSubjects)
-        this.view.loadNewSelect(this.model.availableSubjects)
+        this.view.loadSelect(document.getElementById('dropdown'), this.model.availableSubjects)
+        console.log(this.model.availableSubjects)
     }
 
     start() {
@@ -33,15 +34,17 @@ class Controller {
      * Controls which subject is selected
      */
     selectSubject() {
-        // Get the name of the subject
-        const name = document.getElementById('choice').textContent
-        if (name != "Please choose") {
-            console.log(name)
-            this.model.selectSubject(name)
+        // Get the index of the selected subject
+        const index = this.view.getSelectedIndex()
 
-        } else {
-            alert('Select a subject')
-        }
+        // Get the subject in the list with that index
+        const subject = this.model.availableSubjects[index]
+
+        this.model.select(subject)
+
+        this.view.clearSelect(document.getElementById('selected-subjects-select'))
+        this.view.loadSelect(document.getElementById('selected-subjects-select'), this.model.selectedSubjects)
+        console.log(subject)
         //this.view.clearSelect(this.view.selectAvailableSubjects)
         //this.view.clearSelect(this.view.selectSelectedSubjects)
 
