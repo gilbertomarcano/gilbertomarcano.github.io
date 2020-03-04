@@ -3,10 +3,6 @@ class View {
         // The root element
         this.app = this.getElement('#root')
 
-        // The select forms
-        this.selectAvailableSubjects = document.getElementById('available-subjects-select')
-        this.selectSelectedSubjects = document.getElementById('selected-subjects-select')
-
         this.totalSubjects = 0
 
 
@@ -16,15 +12,18 @@ class View {
 
 
     getSelectedIndex() {
-        const index = document.getElementById('dropdown').getAttribute('selected')
+        const index = document.getElementById('available-subjects-select').getAttribute('selected')
         return index
     }
 
     loadSelect(select, subjects = new Array()) {
-        subjects.forEach(subject => {
-            const name = subject.name
-            this.appendChildToSelect(select, name)
-        })
+        if (subjects[0]) {
+            subjects.forEach(subject => {
+                const name = subject.name
+                this.appendChildToSelect(select, name)
+            })
+        }
+        
 
     }
 
@@ -33,8 +32,9 @@ class View {
      * @param {*} select the select that is going to be extended
      * @param {*} name the name of the subject to be appended
      */
-    appendChildToSelect(select, name) {
+    appendChildToSelect(selectId, name) {
         // Create and append the element
+        const select = document.getElementById(selectId)
         const element = this.createElement('option', name)
         const id = this.createAttribute('id', this.totalSubjects.toString())
         this.totalSubjects += 1
@@ -69,7 +69,8 @@ class View {
     }
 
 
-    clearSelect(select) {
+    clearSelect(selectId) {
+        const select = document.getElementById(selectId)
         for (let i = select.options.length - 1; i >= 0; i--) {
             select.remove(i);
         }
@@ -93,7 +94,7 @@ class View {
         }
     }
 
-    load(schedule) {
+    loadSchedule(schedule) {
         console.log('ready to load', schedule)
         for (let i = 0, len = schedule.subjects.length; i < len; i++) {
             this.createSubjectEvent(schedule.subjects[i])

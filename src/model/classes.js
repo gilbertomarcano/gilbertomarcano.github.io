@@ -1,70 +1,56 @@
-// Class Day
-class ClassDay {
-    constructor(classroom, hours) {
-        this.classroom = classroom
-        this.hours = hours
-    }
-
-    includes(anotherClassDay = new ClassDay()) {
-        let intersection
-        intersection = this.hours.filter(Set.prototype.has.bind(new Set(anotherClassDay.hours)))
-        return Boolean(intersection.length)
-    }
-}
-
-
-
-
-// Section
-class Section {
-    constructor(professor, id, classDays = new Array()) {
-        this.professor = professor
-        this.id = id
-        this.classDays = classDays
-    }
-}
-
-
-
-
-// Subject
-class Subject {
-    constructor(name, code, semester, sections = new Array()) {
-        this.name = name
-        this.code = code
-        this.semester = semester
-        this.credits = parseInt(code[6])
-        this.sections = sections
-    }
-}
-
-
-
-// Schedule
+/**
+ * Represent a schedule with an array of valid subjects and its corresponded section
+ */
 class Schedule {
-    constructor(subjects = new Array()) {
-        this.subjects = subjects
+    /**
+     * Construct a Schedule Object
+     * @param {Array} subjects 
+     */
+    constructor(subjectsAndSections) {
+        this.subjectsAndSections = subjectsAndSections
     }
 
-    check(newSection = new Section()) {
-        var added = true
-        // Select each subject of the list subjects
-        this.subjects.forEach(item => {
-            // Get the index of the selected section
-            let indexOfSection = item.indexOfSection
-            // Get the selected section in the subject using the index
-            let section = item.subject.sections[indexOfSection]
 
-            for (var i = 0; i < 5; i++) {
-                if (section.classDays[i] && newSection.classDays[i] && section.classDays[i].includes(newSection.classDays[i])) {
-                    added = false
+    // GET TO THE DATABASE TO REMAKE THE APP COMPLETELY AAAAAAAAAAAAAAAAAAAAAAAAaa
+    
+    validSection(newSection) {
+        let valid = true
+        // Select each subject of the list subjects
+        this.subjectsAndSections.forEach(pair => {
+            // Get the index of the selected section
+            let indexOfSection = pair.indexOfSection
+            // Get the selected section in the subject using the index
+            let section = pair.subject.sections[indexOfSection]
+
+            for (let i = 0; i < 5; i++) {
+                if (section.classes[i] && newSection.classes[i] && section.classes[i].intersect(newSection.classes[i])) {
+                    valid = false
                     return
-                }      
+                }
             }
         })
 
-        return added
+        return valid
     }
+    // check(newSection = new Section()) {
+    //     var added = true
+    //     // Select each subject of the list subjects
+    //     this.subjects.forEach(item => {
+    //         // Get the index of the selected section
+    //         let indexOfSection = item.indexOfSection
+    //         // Get the selected section in the subject using the index
+    //         let section = item.subject.sections[indexOfSection]
+
+    //         for (var i = 0; i < 5; i++) {
+    //             if (section.classDays[i] && newSection.classDays[i] && section.classDays[i].includes(newSection.classDays[i])) {
+    //                 added = false
+    //                 return
+    //             }      
+    //         }
+    //     })
+
+    //     return added
+    // }
 
     appendSubject(subjectToAppend, indexOfSection) {
         var section = subjectToAppend.sections[indexOfSection]
@@ -198,6 +184,6 @@ function database_read_day(day) {
             hours.push(parseInt(day[j]))
         }
 
-        return new ClassDay(classroom, hours)
+        return new Class(classroom, hours)
     }
 }

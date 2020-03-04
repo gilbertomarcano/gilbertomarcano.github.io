@@ -4,78 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dropdown.css">
 
   <title>Document</title>
 </head>
 
 <body>
+
   <label class="switch">
     <input type="checkbox">
     <span>Light</span>
   </label>
-
-  <h1>Dropdown Test</h1>
-  <label for="subjectSelect">Subjects:</label>
-
-  <form id="myForm">
-    <select id="available-subjects-select">
-    </select>
-  </form>
-
-
-  <input type="button" onclick="app.selectSubject()" value="Select subject">
-  <br><br>
-  <label>Please choose one or more pets: <br>
-    <select id="selected-subjects-select" multiple size="6">
-      <option>My Subjects</option>
-    </select>
-  </label>
-  <br><br>
-  <input type="button" onclick="app.start()" value="Generate Schedule">
-  <br>
-  <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
-  <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
-
-  <!-- THIS END MY CODE -->
-
-  <br><br><br><br><br><br>
-  <h1>MY CODE ENDS HERE</h1>
-  <br><br><br><br><br><br>
-
-  <div class="mydropdown">
-    <ul>
-      <li>lol</li>
-      <li>lol</li>
-      <li>lol</li>
-
-    </ul>
-  </div>
-
-  <br><br><br><br><br><br>
-
-  <select class="dropdown" placeholder="Please choose" id="dropdown" selected="-1">
-    
-    <!--<option>List entry #1</option>-->
+  <h1>Dropdown test</h1>
+  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1">
   </select>
 
+  <br> <input type="button" onclick="app.selectSubject()" value="Select subject"> <br><br>
 
-  <br><br><br><br><br><br>
-  <br><br><br><br><br><br>
+  <div class="list">
+    <select id="selected-subjects-select" multiple size="6">
+      <option>My subjects</option>
+    </select>
+  </div>
+  
+  <br><br>
+    <input type="button" onclick="app.start()" value="Generate Schedule">
+    <br>
+    <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
+    <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
 
+    <!-- THIS END MY CODE -->
 
- 
-
-
-
-
-
-
-
-  <br><br><br><br><br><br>
-  <h1>THE DROPDOWN ENDS HERE</h1>
-  <br><br><br><br><br><br>
-
+    <br><br>
 
   <!-- <div class="container">
     <h2>Select a subject</h2>
@@ -308,23 +269,35 @@
 
 
 
-
-
-
+  <!-- JQuery for the dropdown (net::ERR_INTERNET_DISCONECTED) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <!-- Model classes -->
+  <script src="src/model/class.js"></script>
+  <script src="src/model/section.js"></script>
+  <script src="src/model/subject.js"></script>
+  <script src="src/model/classes.js"></script>
+  <script src="src/model/model.js"></script>
+
+  <!-- View classes -->
   <!--<script src="assets/js/add.js"></script>  util functions included in the CodyHouse framework -->
-  <script src="assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
-  <script src="assets/js/main.js"></script>
+  <script src="src/view/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+  <script src="src/view/main.js"></script>
+  <script src="src/view/view.js"></script>
+
+  <!-- Controller classes-->
+  <script src="src/controller/controller.js"></script>
+  <script src="src/controller/script.js"></script>
+
+  <!-- Requires what's in script.js for some reason   -->
+  <script sRC="src/view/dropdown.js"></script>
+  
 
 
 
-  <script src="assets/js/classes.js"></script>
-  <script src="assets/js/model.js"></script>
-  <script src="assets/js/view.js"></script>
-  <script src="assets/js/controller.js"></script>
-  <script src="assets/js/script.js"></script>
 
-  <script sRC="assets/js/dropdown.js"></script>    
+  
+
 
 </body>
 

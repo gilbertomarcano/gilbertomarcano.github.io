@@ -4,9 +4,8 @@ class Controller {
         this.view = view
 
         this.selectedSchedule = 0
-        this.schedule = new Schedule()
+        this.schedule = new Schedule(new Array())
 
-        this.dropdown = document.getElementById('dropdown')
     }
 
 
@@ -16,15 +15,13 @@ class Controller {
         database_fill_subject_list(data, this.model.availableSubjects)
 
         // Reload de select
-        this.view.loadSelect(document.getElementById('dropdown'), this.model.availableSubjects)
-        console.log(this.model.availableSubjects)
+        this.view.loadSelect('available-subjects-select', this.model.availableSubjects)
     }
 
     start() {
-        console.log('start on controller')
         this.model.generateSchedules()
 
-        this.view.load(this.model.generator.generatedSchedules[this.selectedSchedule])
+        this.view.loadSchedule(this.model.generator.generatedSchedules[this.selectedSchedule])
 
         //let item = schedule.subjects[0]
         //this.view.createSubjectEvent(item)
@@ -39,22 +36,16 @@ class Controller {
 
         // Get the subject in the list with that index
         const subject = this.model.availableSubjects[index]
+        if (!subject) {
+            alert('subject is undefined')
+        } else {
+            this.model.select(subject)
 
-        this.model.select(subject)
-
-        this.view.clearSelect(document.getElementById('selected-subjects-select'))
-        this.view.loadSelect(document.getElementById('selected-subjects-select'), this.model.selectedSubjects)
-        console.log(subject)
-        //this.view.clearSelect(this.view.selectAvailableSubjects)
-        //this.view.clearSelect(this.view.selectSelectedSubjects)
-
-        //this.view.reloadSelect(this.model.availableSubjects)
+            this.view.clearSelect('selected-subjects-select')
+            this.view.loadSelect('selected-subjects-select', this.model.selectedSubjects)
+        }
     }
     
-    getSubjectByName(name) {
-        
-    }
-
     nextSchedule() {
         if (this.selectedSchedule < this.model.generator.generatedSchedules.length - 1) {
             this.view.clearList()

@@ -20,6 +20,11 @@ $('select.dropdown').each(function () {
         $(this).parent().addClass('filled');
     }
 
+    if (this.getAttribute('selected') == -1) {
+        document.getElementById('choice').textContent = "Please choose"
+        $(this).parent()[0].getElementsByClassName('active')[0].classList.remove('active')
+    }
+
 });
 
 $(document).on('click touch', '.selectDropdown ul li a', function (e) {
@@ -41,13 +46,14 @@ $(document).on('click touch', '.selectDropdown ul li a', function (e) {
 
     dropdown.removeClass('open');
 
+    // If select default choose, assign -1 to selected
     if (document.getElementById('choice').textContent === "Please choose") {
-        document.getElementById('dropdown').setAttribute('selected', -1)
+        document.getElementById('available-subjects-select').setAttribute('selected', -1)
     }
     else {
         for (let i = 0; i < list.length; i++) {
             if (list[i].className === 'active') {
-                document.getElementById('dropdown').setAttribute('selected', i)
+                document.getElementById('available-subjects-select').setAttribute('selected', i)
                 return
             } 
         }
@@ -61,15 +67,10 @@ $('.dropdown > span').on('click touch', function (e) {
 });
 
 $(document).on('click touch', function (e) {
-    console.log('click afuera')
-    //var dropdown = $('.dropdown');
-    var dropdown = document.getElementById('dropdown')
-    console.log(dropdown)
-    if (dropdown !== e.target) {
-        dropdown.classList.remove('open')
-
-        //dropdown.removeClass('open');
-    }
+    var dropdown = $('.dropdown');
+    if (dropdown !== e.target && !dropdown.has(e.target).length) {
+        dropdown.removeClass('open');
+      }
 });
 
 // light
