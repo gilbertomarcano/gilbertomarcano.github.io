@@ -12,7 +12,7 @@ class Schedule {
 
 
     // GET TO THE DATABASE TO REMAKE THE APP COMPLETELY AAAAAAAAAAAAAAAAAAAAAAAAaa
-    
+        
     validSection(newSection) {
         let valid = true
         // Select each subject of the list subjects

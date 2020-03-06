@@ -6,8 +6,8 @@ class Controller {
         this.selectedSchedule = 0
         this.schedule = new Schedule(new Array())
 
+        this.list = new listView('selected-subjects')
     }
-
 
     init() {
         // Get data for model from the database 
@@ -16,6 +16,7 @@ class Controller {
 
         // Reload de select
         this.view.loadSelect('available-subjects-select', this.model.availableSubjects)
+        //this.view.loadUl('test-ul', this.model.availableSubjects)
     }
 
     start() {
@@ -41,18 +42,19 @@ class Controller {
         } else {
             this.model.select(subject)
 
-            this.view.clearSelect('selected-subjects-select')
-            this.view.loadSelect('selected-subjects-select', this.model.selectedSubjects)
+            const code = subject.code
+            const name = subject.name
+            this.list.append('(' + code + ') ' + name)
         }
     }
-    
+
     nextSchedule() {
         if (this.selectedSchedule < this.model.generator.generatedSchedules.length - 1) {
             this.view.clearList()
             this.selectedSchedule++
             this.view.load(this.model.generator.generatedSchedules[this.selectedSchedule])
         }
-        
+
     }
 
     prevSchedule() {
@@ -63,5 +65,5 @@ class Controller {
         }
     }
 
-    
+
 }

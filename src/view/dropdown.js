@@ -22,6 +22,7 @@ $('select.dropdown').each(function () {
 
     if (this.getAttribute('selected') == -1) {
         document.getElementById('choice').textContent = "Please choose"
+        console.log($(this).parent()[0].getElementsByClassName('active'))
         $(this).parent()[0].getElementsByClassName('active')[0].classList.remove('active')
     }
 

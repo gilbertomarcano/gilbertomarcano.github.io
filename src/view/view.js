@@ -16,15 +16,25 @@ class View {
         return index
     }
 
+    loadUl(ulId, subjects = new Array()) {
+        const ul = document.getElementById(ulId)
+        if (subjects[0]) {
+            subjects.forEach(subject => {
+                const code = subject.code
+                const name = subject.name
+                this.appendToUl(ulId, '(' + code + ') ' + name)
+            })
+        } 
+    }
+
     loadSelect(select, subjects = new Array()) {
         if (subjects[0]) {
             subjects.forEach(subject => {
+                const code = subject.code
                 const name = subject.name
-                this.appendChildToSelect(select, name)
+                this.appendChildToSelect(select, '(' + code + ') ' + name)
             })
         }
-        
-
     }
 
     /**
@@ -32,10 +42,10 @@ class View {
      * @param {*} select the select that is going to be extended
      * @param {*} name the name of the subject to be appended
      */
-    appendChildToSelect(selectId, name) {
+    appendChildToSelect(selectId, value) {
         // Create and append the element
         const select = document.getElementById(selectId)
-        const element = this.createElement('option', name)
+        const element = this.createElement('option', value)
         const id = this.createAttribute('id', this.totalSubjects.toString())
         this.totalSubjects += 1
 

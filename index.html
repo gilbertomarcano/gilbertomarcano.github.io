@@ -6,6 +6,8 @@
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dropdown.css">
+  <link rel="stylesheet" href="assets/css/list.css">
+
 
   <title>Document</title>
 </head>
@@ -17,16 +19,29 @@
     <span>Light</span>
   </label>
   <h1>Dropdown test</h1>
-  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1">
-  </select>
+
 
   <br> <input type="button" onclick="app.selectSubject()" value="Select subject"> <br><br>
+  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1"></select>
+<br><br><br>
 
-  <div class="list">
-    <select id="selected-subjects-select" multiple size="6">
-      <option>My subjects</option>
-    </select>
-  </div>
+
+<div class="list" id="selected-subjects"></div>
+
+<br><br><br>
+  
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br><br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+
+
   
   <br><br>
     <input type="button" onclick="app.start()" value="Generate Schedule">
@@ -284,6 +299,7 @@
   <script src="src/view/util.js"></script> <!-- util functions included in the CodyHouse framework -->
   <script src="src/view/main.js"></script>
   <script src="src/view/view.js"></script>
+  <script src="src/view/dropdownView.js"></script>
 
   <!-- Controller classes-->
   <script src="src/controller/controller.js"></script>
@@ -291,6 +307,7 @@
 
   <!-- Requires what's in script.js for some reason   -->
   <script sRC="src/view/dropdown.js"></script>
+
   
 
 
