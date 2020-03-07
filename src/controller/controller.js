@@ -23,6 +23,9 @@ class Controller {
         console.log('in init', select)
         this.dropdown.load(this.availableSubjects)
         //this.view.loadUl('test-ul', this.model.availableSubjects)
+
+        clearSchedule()
+
     }
 
     getSelectedSubjects(codes) {
@@ -96,6 +99,8 @@ class Controller {
 
         this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
 
+        runSchedule()
+
         // //let item = schedule.subjects[0]
         // //this.view.createSubjectEvent(item)
     }
@@ -140,18 +145,20 @@ class Controller {
 
     nextSchedule() {
         if (this.selectedSchedule < this.generatedSchedules.length - 1) {
-            this.view.clearList()
+            clearSchedule()
             this.selectedSchedule++
             this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
+            runSchedule()
         }
 
     }
 
     prevSchedule() {
         if (this.selectedSchedule > 0) {
-            this.view.clearList()
+            clearSchedule()
             this.selectedSchedule--
             this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
+            runSchedule()
         }
     }
 }

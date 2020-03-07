@@ -76,7 +76,7 @@ class View {
 
     loadSchedule(schedule) {
         for (let i = 0, len = schedule.subjectsAndSections.length; i < len; i++) {
-            this.createSubjectEvent(schedule.subjectsAndSections[i])
+            addSubjectEvent(schedule.subjectsAndSections[i])
         }
 
     }
