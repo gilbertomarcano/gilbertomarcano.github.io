@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dropdown.css">
   <link rel="stylesheet" href="assets/css/list.css">
+  <link rel="stylesheet" href="assets/css/deletebutton.css">
+
 
 
   <title>Document</title>
@@ -21,37 +23,52 @@
   <h1>Dropdown test</h1>
 
 
+  <button class="button" id="delete-button" onclick="app.buttonDelete()">
+    <div class="trash">
+      <div class="top">
+        <div class="paper"></div>
+      </div>
+      <div class="box"></div>
+      <div class="check">
+        <svg viewBox="0 0 8 6">
+          <polyline points="1 3.4 2.71428571 5 7 1"></polyline>
+        </svg>
+      </div>
+    </div>
+    <span>Delete Item</span>
+  </button>
+
   <br> <input type="button" onclick="app.selectSubject()" value="Select subject"> <br><br>
   <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1"></select>
-<br><br><br>
+  <br><br><br>
 
 
-<div class="list" id="selected-subjects"></div>
+  <div class="list" id="selected-subjects"></div>
 
-<br><br><br>
-  
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br><br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+  <br><br><br>
 
-
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br><br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
 
 
-  
+
+
+
   <br><br>
-    <input type="button" onclick="app.start()" value="Generate Schedule">
-    <br>
-    <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
-    <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
+  <input type="button" onclick="app.start()" value="Generate Schedule">
+  <br>
+  <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
+  <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
 
-    <!-- THIS END MY CODE -->
+  <!-- THIS END MY CODE -->
 
-    <br><br>
+  <br><br>
 
   <!-- <div class="container">
     <h2>Select a subject</h2>
@@ -299,7 +316,8 @@
   <script src="src/view/util.js"></script> <!-- util functions included in the CodyHouse framework -->
   <script src="src/view/main.js"></script>
   <script src="src/view/view.js"></script>
-  <script src="src/view/dropdownView.js"></script>
+  <script src="src/view/ul.js"></script>
+
 
   <!-- Controller classes-->
   <script src="src/controller/controller.js"></script>
@@ -308,12 +326,12 @@
   <!-- Requires what's in script.js for some reason   -->
   <script sRC="src/view/dropdown.js"></script>
 
-  
 
 
 
 
-  
+
+
 
 
 </body>

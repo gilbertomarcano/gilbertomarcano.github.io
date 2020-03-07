@@ -230,3 +230,28 @@ class View {
 
 
 }
+
+
+
+document.addEventListener('click', function (e) {
+    if (e.target.parentNode.parentNode.parentNode === document.getElementById('selected-subjects')) {
+        // Get the ul
+        const ul = document.getElementById('selected-subjects').getElementsByTagName('ul')[0]
+        // Iterate over the li of the ul
+        for (let i = 0, list = ul.children; i < list.length; i++) {
+            const li = list[i]
+            if (li.textContent === e.target.textContent) {
+                // If it's already active
+                if (li.className === 'active') {
+                    li.classList.remove('active')
+                    ul.setAttribute('selected', -1)
+                } else if (li.className === '') {
+                    li.classList.add('active')
+                    ul.setAttribute('selected', i)
+                }
+            } else if (li.className === 'active') {
+                li.classList.remove('active')
+            }
+        }
+    }
+})

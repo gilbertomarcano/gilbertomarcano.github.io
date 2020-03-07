@@ -6,7 +6,7 @@ class Controller {
         this.selectedSchedule = 0
         this.schedule = new Schedule(new Array())
 
-        this.list = new listView('selected-subjects')
+        this.list = new Ul('selected-subjects')
     }
 
     init() {
@@ -40,12 +40,34 @@ class Controller {
         if (!subject) {
             alert('subject is undefined')
         } else {
-            this.model.select(subject)
 
             const code = subject.code
             const name = subject.name
-            this.list.append('(' + code + ') ' + name)
+            const value = '(' + code + ') ' + name
+
+            if (!this.list.inList(value)) {
+                this.list.append(value)
+            } else {
+                alert('already in list')
+            }
         }
+    }
+
+    buttonDelete() {
+        const selected = parseInt(this.list.getSelected())
+        const button = document.getElementById('delete-button')
+
+        if (selected != -1) {
+            this.list.delete(selected)
+
+            if (!button.classList.contains('delete')) {
+                button.classList.add('delete')
+                setTimeout(() => button.classList.remove('delete'), 3200)
+            }
+        } else {
+            alert('No subject selected to delete')                                           // DEBUG ALERT
+        }
+        
     }
 
     nextSchedule() {

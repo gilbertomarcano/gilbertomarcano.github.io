@@ -6,30 +6,7 @@ class Model {
 
     }
 
-    select(subject) {
-        let inList = false
-        this.selectedSubjects.forEach(selectedSubject => {
-            if (selectedSubject == subject) {
-                alert('Already in list')
-                inList = true
-                return
-            }
-        })
-
-        if (!inList) {
-            this.selectedSubjects.push(subject)
-        }
-        
-    }
-
-    remove(subject) {
-        this.selectedSubjects.forEach(selectedSubject => {
-            if (selectedSubject == subject) {
-                const index = this.selectedSubjects.indexOf(selectedSubject)
-                this.selectedSubjects.slice(index, 1)
-            }
-        })
-    }
+   
 
     generateSchedules() {
         // Update the list of the generator
