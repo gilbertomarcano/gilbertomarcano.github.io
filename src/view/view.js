@@ -5,36 +5,6 @@ class View {
 
         this.totalSubjects = 0
 
-
-
-
-    }
-
-
-    getSelectedIndex() {
-        const index = document.getElementById('available-subjects-select').getAttribute('selected')
-        return index
-    }
-
-    loadUl(ulId, subjects = new Array()) {
-        const ul = document.getElementById(ulId)
-        if (subjects[0]) {
-            subjects.forEach(subject => {
-                const code = subject.code
-                const name = subject.name
-                this.appendToUl(ulId, '(' + code + ') ' + name)
-            })
-        } 
-    }
-
-    loadSelect(select, subjects = new Array()) {
-        if (subjects[0]) {
-            subjects.forEach(subject => {
-                const code = subject.code
-                const name = subject.name
-                this.appendChildToSelect(select, '(' + code + ') ' + name)
-            })
-        }
     }
 
     /**
@@ -105,9 +75,8 @@ class View {
     }
 
     loadSchedule(schedule) {
-        console.log('ready to load', schedule)
-        for (let i = 0, len = schedule.subjects.length; i < len; i++) {
-            this.createSubjectEvent(schedule.subjects[i])
+        for (let i = 0, len = schedule.subjectsAndSections.length; i < len; i++) {
+            this.createSubjectEvent(schedule.subjectsAndSections[i])
         }
 
     }
@@ -117,7 +86,7 @@ class View {
 
         //this.createDayEvent(item.subject, day, 'monday-ul')
         for (let i = 0; i < 5; i++) {
-            if (section.classDays[i]) {
+            if (section.classes[i]) {
                 let weekday
                 if (i == 0) weekday = 'monday-ul'
                 else if (i == 1) weekday = 'tuesday-ul'
@@ -125,8 +94,7 @@ class View {
                 else if (i == 3) weekday = 'thursday-ul'
                 else if (i == 4) weekday = 'friday-ul'
 
-                console.log('almost create day event', item.subject, section.classDays[i])
-                this.createDayEvent(item.subject, section.classDays[i], weekday)
+                this.createDayEvent(item.subject, section.classes[i], weekday)
             }
         }
     }
@@ -144,8 +112,8 @@ class View {
 
         // Creating the a element and its attributes
         const a = this.createElement('a')
-        const dataStart = this.createAttribute('data-start', this.intToDate(day.hours[0]))
-        const dataEnd = this.createAttribute('data-end', this.intToDate(day.hours[day.hours.length - 1] + 1))
+        const dataStart = this.createAttribute('data-start', day.start)
+        const dataEnd = this.createAttribute('data-end', day.end)
         const dataContent = this.createAttribute('data-content', 'event-abs-workout')
         const dataEvent = this.createAttribute('data-event', 'event-1')
         const href = this.createAttribute('href', '#0')
@@ -209,49 +177,7 @@ class View {
         return name
     }
 
-
-
-    intToDate(number) {
-        switch (number) {
-            case 7: return '07:00'
-            case 8: return '08:00'
-            case 9: return '09:00'
-            case 10: return '10:00'
-            case 11: return '11:00'
-            case 12: return '12:00'
-            case 13: return '13:00'
-            case 14: return '14:00'
-            case 15: return '15:00'
-            case 16: return '16:00'
-            case 17: return '17:00'
-            default: break
-        }
-    }
-
-
 }
 
 
 
-document.addEventListener('click', function (e) {
-    if (e.target.parentNode.parentNode.parentNode === document.getElementById('selected-subjects')) {
-        // Get the ul
-        const ul = document.getElementById('selected-subjects').getElementsByTagName('ul')[0]
-        // Iterate over the li of the ul
-        for (let i = 0, list = ul.children; i < list.length; i++) {
-            const li = list[i]
-            if (li.textContent === e.target.textContent) {
-                // If it's already active
-                if (li.className === 'active') {
-                    li.classList.remove('active')
-                    ul.setAttribute('selected', -1)
-                } else if (li.className === '') {
-                    li.classList.add('active')
-                    ul.setAttribute('selected', i)
-                }
-            } else if (li.className === 'active') {
-                li.classList.remove('active')
-            }
-        }
-    }
-})

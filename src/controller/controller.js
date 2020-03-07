@@ -7,9 +7,10 @@ class Controller {
         this.generatedSchedules = new Array() // Useful
 
         this.selectedSchedule = 0
-        this.schedule = new Schedule(new Array())
+        this.tempSchedule = new Schedule(new Array())
 
         this.list = new Ul('selected-subjects')
+        this.dropdown = new Dropdown('available-subjects')
     }
 
     init() {
@@ -18,28 +19,37 @@ class Controller {
         database_fill_subject_list(data, this.availableSubjects)
 
         // Reload de select
-        this.view.loadSelect('available-subjects-select', this.availableSubjects)
+        const select = document.getElementById(this.dropdown.getId())
+        console.log('in init', select)
+        this.dropdown.load(this.availableSubjects)
         //this.view.loadUl('test-ul', this.model.availableSubjects)
     }
 
-    start() {
-        this.model.generateSchedules()
+    getSelectedSubjects(codes) {
+        let selectedSubjects = new Array()
+        codes.forEach(code => {
+            for (let i = 0; i < this.availableSubjects.length; i++) {
+                if (this.availableSubjects[i].code === code) {
+                    selectedSubjects.push(this.availableSubjects[i])
+                    break
+                }
 
-        this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
-
-        //let item = schedule.subjects[0]
-        //this.view.createSubjectEvent(item)
+            }
+        })
+        return selectedSubjects
     }
 
+    
     /**
      * Controls which subject is selected
      */
-    selectSubject() {
+    buttonSelect() {
         // Get the index of the selected subject
-        const index = this.view.getSelectedIndex()
+        const index = this.dropdown.getSelectedIndex()
 
         // Get the subject in the list with that index
         const subject = this.availableSubjects[index]
+
         if (!subject) {
             alert('subject is undefined')
         } else {
@@ -74,14 +84,65 @@ class Controller {
         } else {
             alert('No subject selected to delete')                                           // DEBUG ALERT
         }
-        
+
     }
+
+    start() {
+        const codes = this.list.getData()
+        this.selectedSubjects = this.getSelectedSubjects(codes)
+        this.generator(0)
+
+        // this.model.generateSchedules()
+
+        this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
+
+        // //let item = schedule.subjects[0]
+        // //this.view.createSubjectEvent(item)
+    }
+
+
+
+    /**
+     * Algorithm that generates the valid schedules.
+     */
+    generator(index = 0) {
+        // Check if there are selected subjects
+        let subjectsLen = this.selectedSubjects.length
+        if (subjectsLen == 0) return
+        
+        // Instantiate the subject to test
+        let subject = this.selectedSubjects[index]
+        
+        // Get the sections of the subject
+        let sections = this.selectedSubjects[index].sections
+
+        // Iterate over the sections of the subject
+        for (let i = 0, len = sections.length; i < len; i++) {
+
+            // If it's valid to add the i'th section
+            if (this.tempSchedule.appendSubject(subject, i)) {
+
+                // And if there are more subjects
+                if (index + 1 != subjectsLen) {
+                    // Iterate over the next subject in the subjects Array
+                    this.generator(index + 1)
+                } else {
+                    // Push the generated schedule
+                    this.generatedSchedules.push(new Schedule([...this.tempSchedule.subjectsAndSections]))
+                }
+
+                // Remove the last appended subject
+                this.tempSchedule.removeSubject(subject)
+            }
+        }
+    }
+
 
     nextSchedule() {
         if (this.selectedSchedule < this.generatedSchedules.length - 1) {
             this.view.clearList()
             this.selectedSchedule++
-            this.view.load(this.generatedSchedules[this.selectedSchedule])
+            this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
         }
 
     }
@@ -90,20 +151,7 @@ class Controller {
         if (this.selectedSchedule > 0) {
             this.view.clearList()
             this.selectedSchedule--
-            this.view.load(this.generatedSchedules[this.selectedSchedule])
+            this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
         }
     }
-
-    generateSchedules() {
-        // Update the list of the generator
-        this.generator = new ScheduleGenerator(this.selectedSubjects)
-        // Start the generator
-        this.generator.start()
-        this.generatedSchedules = [...this.generatedSchedules] 
-        console.log(this.generatedSchedules)
-
-
-    }
-
-
 }

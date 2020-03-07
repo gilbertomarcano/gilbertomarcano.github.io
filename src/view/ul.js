@@ -7,7 +7,7 @@ class Ul {
      * @param {String} id - the html id
      */
     constructor(id) {
-        // Get the id and the get the div
+        // Get the id and get the div
         this.id = id
         this.div = document.getElementById(id)
 
@@ -69,8 +69,33 @@ class Ul {
         while (true) {
             let length = this.ul.children.length
             this.append('-')
-            if (length < 8) break
+            if (length > 6) break
         }
+    }
+
+    isEmpty() {
+        if (this.ul.children[0].firstChild.textContent === '-') {
+            return true
+        }
+        return false
+    }
+
+    /**
+     * Get the code of the subjects in the list
+     */
+    getData() {
+        if (this.isEmpty()) {
+            alert('empty list')
+        }
+
+        let subjectNames = Array()
+        for (let i = 0, len = this.ul.children.length; i < len; i++) {
+            let value = this.ul.children[i].firstChild.textContent
+            if (value !== '-') {
+                subjectNames.push(value.substr(1, 7))
+            }
+        }
+        return subjectNames
     }
 
     /**

@@ -44,9 +44,8 @@ class Class {
      * @param {Date} start - the hour when the class starts
      * @param {Date} end - the hour when the class finishes
      */
-    constructor(classroom, hours, start = new Date(7), end = new Date(0)) {
+    constructor(classroom, start = new Date(7), end = new Date(0)) {
         this.classroom = classroom
-        this.hours = hours
         this.start = start
         this.end = end
     }

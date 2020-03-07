@@ -13,7 +13,7 @@
     --listBorder: none;
     --textFilled: #99a3ba;
     visibility: hidden;
-    width: 300px;
+    width: 380px;
     position: relative;
   }
   .list {
@@ -31,7 +31,7 @@
     --listBorder: #e4ecfa;
     --textFilled: #6c7486;
     visibility: collapse;
-    width: 300px;
+    width: 380px;
     position: relative;
   }
   .list select {

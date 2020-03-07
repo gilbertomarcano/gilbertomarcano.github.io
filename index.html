@@ -22,13 +22,12 @@
 
   <h2>Available subjects</h2> <br>  
 
-  <button class="button" onclick="app.selectSubject()">
+  <button class="button" onclick="app.buttonSelect()">
     <span>Select subject</span>
   </button>
 
   <br><br>
-  
-  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1"></select>
+  <select class="dropdown" placeholder="Please choose" id="available-subjects" selected="-1"></select>
 
   <br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br>
@@ -105,7 +104,7 @@
       </header>-->
 
   <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
-    <div class="cd-schedule__timeline">
+    <div class="cd-schedule__timeline" id="schedule">
       <ul>
         <li><span>07:00</span></li>
         <li><span>07:30</span></li>
@@ -311,22 +310,24 @@
   <script src="src/model/class.js"></script>
   <script src="src/model/section.js"></script>
   <script src="src/model/subject.js"></script>
+  <script src="src/model/schedule.js"></script>
   <script src="src/model/classes.js"></script>
 
   <!-- View classes -->
   <!--<script src="assets/js/add.js"></script>  util functions included in the CodyHouse framework -->
   <script src="src/view/util.js"></script> <!-- util functions included in the CodyHouse framework -->
-  <script src="src/view/main.js"></script>
+  <script src="src/view/scheduleView.js"></script>
   <script src="src/view/view.js"></script>
   <script src="src/view/ul.js"></script>
+  <script src="src/view/dropdown.js"></script>
+  <script src="src/view/dropdownView.js"></script>
+  <script src="src/view/eventListener.js"></script>
+
 
 
   <!-- Controller classes-->
   <script src="src/controller/controller.js"></script>
   <script src="src/controller/script.js"></script>
-
-  <!-- Requires what's in script.js for some reason   -->
-  <script sRC="src/view/dropdown.js"></script>
 
 
 

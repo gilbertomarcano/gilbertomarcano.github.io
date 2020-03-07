@@ -20,10 +20,11 @@ $('select.dropdown').each(function () {
         $(this).parent().addClass('filled');
     }
 
-    if (this.getAttribute('selected') == -1) {
-        document.getElementById('choice').textContent = "Please choose"
-        $(this).parent()[0].getElementsByClassName('active')[0].classList.remove('active')
-    }
+    // FIX THIS DUE TO THE SELECT
+    // if (this.getAttribute('selected') == -1) {
+    //     document.getElementById('choice').textContent = "Please choose"
+    //     $(this).parent()[0].getElementsByClassName('active')[0].classList.remove('active')
+    // }
 
 });
 
@@ -46,18 +47,18 @@ $(document).on('click touch', '.selectDropdown ul li a', function (e) {
 
     dropdown.removeClass('open');
 
-    // If select default choose, assign -1 to selected
-    if (document.getElementById('choice').textContent === "Please choose") {
-        document.getElementById('available-subjects-select').setAttribute('selected', -1)
-    }
-    else {
-        for (let i = 0; i < list.length; i++) {
-            if (list[i].className === 'active') {
-                document.getElementById('available-subjects-select').setAttribute('selected', i)
-                return
-            } 
-        }
-    }
+    // If select default choose, assign -1 to selected MY CODE
+    // if (document.getElementById('choice').textContent === "Please choose") {
+    //     document.getElementById('available-subjects').setAttribute('selected', -1)
+    // }
+    // else {
+    //     for (let i = 0; i < list.length; i++) {
+    //         if (list[i].className === 'active') {
+    //             document.getElementById('available-subjects').setAttribute('selected', i)
+    //             return
+    //         } 
+    //     }
+    // }
     
 });
 

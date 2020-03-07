@@ -1,3 +1,8 @@
+class ScheduleView {
+	constructor() {}
+	
+}
+
 (function() {
 	// Schedule Template - by CodyHouse.co
 	function ScheduleTemplate( element ) {
