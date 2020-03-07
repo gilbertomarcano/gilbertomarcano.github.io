@@ -1,7 +1,10 @@
 class Controller {
-    constructor(model, view) {
-        this.model = model
+    constructor(view) {
         this.view = view
+
+        this.availableSubjects = new Array() // Useful
+        this.selectedSubjects = new Array() // ??
+        this.generatedSchedules = new Array() // Useful
 
         this.selectedSchedule = 0
         this.schedule = new Schedule(new Array())
@@ -12,17 +15,17 @@ class Controller {
     init() {
         // Get data for model from the database 
         const data = database_get()
-        database_fill_subject_list(data, this.model.availableSubjects)
+        database_fill_subject_list(data, this.availableSubjects)
 
         // Reload de select
-        this.view.loadSelect('available-subjects-select', this.model.availableSubjects)
+        this.view.loadSelect('available-subjects-select', this.availableSubjects)
         //this.view.loadUl('test-ul', this.model.availableSubjects)
     }
 
     start() {
         this.model.generateSchedules()
 
-        this.view.loadSchedule(this.model.generator.generatedSchedules[this.selectedSchedule])
+        this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
 
         //let item = schedule.subjects[0]
         //this.view.createSubjectEvent(item)
@@ -36,7 +39,7 @@ class Controller {
         const index = this.view.getSelectedIndex()
 
         // Get the subject in the list with that index
-        const subject = this.model.availableSubjects[index]
+        const subject = this.availableSubjects[index]
         if (!subject) {
             alert('subject is undefined')
         } else {
@@ -46,7 +49,9 @@ class Controller {
             const value = '(' + code + ') ' + name
 
             if (!this.list.inList(value)) {
+                this.list.clear()
                 this.list.append(value)
+                this.list.fill()
             } else {
                 alert('already in list')
             }
@@ -64,6 +69,8 @@ class Controller {
                 button.classList.add('delete')
                 setTimeout(() => button.classList.remove('delete'), 3200)
             }
+            this.list.fill()
+
         } else {
             alert('No subject selected to delete')                                           // DEBUG ALERT
         }
@@ -71,10 +78,10 @@ class Controller {
     }
 
     nextSchedule() {
-        if (this.selectedSchedule < this.model.generator.generatedSchedules.length - 1) {
+        if (this.selectedSchedule < this.generatedSchedules.length - 1) {
             this.view.clearList()
             this.selectedSchedule++
-            this.view.load(this.model.generator.generatedSchedules[this.selectedSchedule])
+            this.view.load(this.generatedSchedules[this.selectedSchedule])
         }
 
     }
@@ -83,8 +90,19 @@ class Controller {
         if (this.selectedSchedule > 0) {
             this.view.clearList()
             this.selectedSchedule--
-            this.view.load(this.model.generator.generatedSchedules[this.selectedSchedule])
+            this.view.load(this.generatedSchedules[this.selectedSchedule])
         }
+    }
+
+    generateSchedules() {
+        // Update the list of the generator
+        this.generator = new ScheduleGenerator(this.selectedSubjects)
+        // Start the generator
+        this.generator.start()
+        this.generatedSchedules = [...this.generatedSchedules] 
+        console.log(this.generatedSchedules)
+
+
     }
 
 

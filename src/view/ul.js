@@ -1,4 +1,11 @@
+/**
+ * Dinamyc ul element
+ */
 class Ul {
+    /**
+     * Create an ul element with its attributes and children
+     * @param {String} id - the html id
+     */
     constructor(id) {
         // Get the id and the get the div
         this.id = id
@@ -14,8 +21,14 @@ class Ul {
         // Add the classes
         this.div.classList.add('selectMydropdown')
         this.div.classList.add('filled')
+
+        this.fill()
     }
 
+    /**
+     * Append a value at the end of the list
+     * @param {String} value - the string to be appended
+     */
     append(value) {
         // Get and create the elements
         const li = document.createElement('li')
@@ -26,13 +39,60 @@ class Ul {
         this.ul.appendChild(li)
     }
 
+    /**
+     * Eliminate the dashes in the list
+     */
+    clear() {
+        for (let i = 0, len = this.ul.children.length; i < len; i++) {
+            if (this.ul.children[i].firstChild.textContent === '-') {
+                while (true) {
+                    this.ul.removeChild(this.ul.childNodes[i])
+                    if (this.ul.children.length === i) return
+                }
+            }
+        }
+    }
+
+    /**
+     * Delete a particular child by its index
+     * @param {Integer} index - the index of the children to be deleted
+     */
     delete(index) {
         this.ul.removeChild(this.ul.childNodes[index])
         this.ul.setAttribute('selected', -1)
     }
 
+    /**
+     * Fill the list with dashes if needed
+     */
+    fill() {
+        while (true) {
+            let length = this.ul.children.length
+            this.append('-')
+            if (length < 8) break
+        }
+    }
+
+    /**
+     * Get the html id of the div element
+     */
+    getId() {
+        return this.id
+    }
+
+    /**
+     * Get the selected index in the list
+     */
+    getSelected() {
+        return this.ul.getAttribute('selected')
+    }
+
+    /**
+     * Verify if a value is an item in the list
+     * @param {String} value - the value to verify
+     */
     inList(value) {
-        // Get the elements
+        // Iterate over the children of the ul
         for (let i = 0, list = this.ul.children; i < list.length; i++) {
             if (list[i].firstChild.textContent === value) {
                 return true
@@ -41,15 +101,6 @@ class Ul {
         return false
     }
 
-    getId() {
-        return this.id
-    }
-
-    getSelected() {
-        return this.ul.getAttribute('selected')
-    }
-    
-    
 }
 
 

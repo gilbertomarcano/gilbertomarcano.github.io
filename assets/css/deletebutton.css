@@ -19,7 +19,7 @@
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     color: var(--text);
     background: var(--btn, var(--background));
     box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);

@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="assets/css/dropdown.css">
   <link rel="stylesheet" href="assets/css/list.css">
   <link rel="stylesheet" href="assets/css/deletebutton.css">
-
-
-
   <title>Document</title>
 </head>
 
@@ -20,9 +17,23 @@
     <input type="checkbox">
     <span>Light</span>
   </label>
-  <h1>Dropdown test</h1>
 
+  <h1>Test</h1>
 
+  <h2>Available subjects</h2> <br>  
+
+  <button class="button" onclick="app.selectSubject()">
+    <span>Select subject</span>
+  </button>
+
+  <br><br>
+  
+  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1"></select>
+
+  <br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br>
+
+  <h2>My subjects</h2> <br>
   <button class="button" id="delete-button" onclick="app.buttonDelete()">
     <div class="trash">
       <div class="top">
@@ -37,34 +48,26 @@
     </div>
     <span>Delete Item</span>
   </button>
-
-  <br> <input type="button" onclick="app.selectSubject()" value="Select subject"> <br><br>
-  <select class="dropdown" placeholder="Please choose" id="available-subjects-select" selected="-1"></select>
-  <br><br><br>
-
-
   <div class="list" id="selected-subjects"></div>
 
-  <br><br><br>
+  <br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
 
-  <br><br><br>
-  <br><br><br>
-  <br><br><br>
-  <br><br><br>
-  <br><br><br><br><br><br>
-  <br><br><br>
-  <br><br><br>
-  <br><br><br>
-
-
-
-
+  <button class="button" onclick="app.start()">
+    <span>Generate Schedule</span>
+  </button>
 
   <br><br>
-  <input type="button" onclick="app.start()" value="Generate Schedule">
-  <br>
-  <input type="button" onclick="app.prevSchedule()" value="Previus Schedule">
-  <input type="button" onclick="app.nextSchedule()" value="Next Schedule">
+  
+  <button class="button" onclick="app.prevSchedule()">
+    <span>Previous schedule</span>
+  </button>
+
+  <span>       </span>
+  
+  <button class="button" onclick="app.nextSchedule()">
+    <span>Next Schedule</span>
+  </button>
 
   <!-- THIS END MY CODE -->
 
@@ -309,7 +312,6 @@
   <script src="src/model/section.js"></script>
   <script src="src/model/subject.js"></script>
   <script src="src/model/classes.js"></script>
-  <script src="src/model/model.js"></script>
 
   <!-- View classes -->
   <!--<script src="assets/js/add.js"></script>  util functions included in the CodyHouse framework -->

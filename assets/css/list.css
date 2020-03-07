@@ -115,11 +115,3 @@
   .list.filled > span {
     color: var(--textFilled);
   }
-  body .list {
-    left: 15%;
-    margin-top: 60px;
-  }
-  body .list img {
-    display: block;
-    height: 28px;
-  }

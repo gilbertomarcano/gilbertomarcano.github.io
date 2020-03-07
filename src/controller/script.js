@@ -1,3 +1,3 @@
-const app = new Controller(new Model(), new View())
+const app = new Controller(new View())
 
 app.init()

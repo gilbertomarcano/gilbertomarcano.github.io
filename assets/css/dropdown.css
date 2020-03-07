@@ -295,28 +295,6 @@ body {
 body.light {
   --bg: #171c28;
 }
-body .switch {
-  position: relative;
-  bottom: 0px;
-  left: 50%;
-  transform: translate(0, 0);
-}
-body .dropdown {
-  left: 15%;
-  margin-top: 60px;
-}
-body .dribbble {
-  position: fixed;
-  display: block;
-  right: 20px;
-  bottom: 20px;
-}
-body .dribbble img {
-  display: block;
-  height: 28px;
-}
-
-
 
 
 .list select {
