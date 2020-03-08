@@ -174,7 +174,7 @@
   .cd-schedule .events .top-info {
     width: 100%;
     padding: 0 5%;
-  }
+  } 
   
   .cd-schedule .events .top-info > span {
     display: inline-block;
@@ -193,7 +193,12 @@
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
   }
-  
+
+  .cd-schedule .events .events-group > li {
+      position: relative;
+      width: 500px;
+  }
+
   .cd-schedule .events .events-group > ul::after {
     /* never visible - used to add a right padding to .events-group > ul */
     display: inline-block;
@@ -240,7 +245,7 @@
       width: 100%;
     }
     .cd-schedule .events .events-group {
-      width: 14%;
+      width: 20%;
       float: left;
       border: 1px solid #EAEAEA;
       /* reset style */
@@ -261,8 +266,8 @@
       /* vertically center inside its parent */
       display: table-cell;
       vertical-align: middle;
-      padding: 0 .5em;
       text-align: center;
+      padding: 0 .5em;
       /* reset style */
       font-weight: normal;
       margin-bottom: 0;

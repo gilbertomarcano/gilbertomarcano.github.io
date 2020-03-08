@@ -15,55 +15,9 @@ function addClassEvent(subjectName, classDay, weekdayid) {
 
     a.appendChild(em)
     li.appendChild(a)
-
+    console.log(weekdayid)
     const ul = document.getElementById(weekdayid)
     ul.appendChild(li)
-
-    console.log(ul.children[0])
-    console.log(ul.children[4])
-}
-
-function addEvent() {
-    const li = document.createElement('li')
-    li.classList.add('single-event')
-    li.setAttribute('data-start', '07:00')
-    li.setAttribute('data-end', '09:00')
-    li.setAttribute('data-contenct', 'event-abs-circuit')
-    li.setAttribute('data-event', "event-3")
-
-    const a = document.createElement('a')
-    a.setAttribute('href', '#0')
-
-    const em = document.createElement('em')
-    em.classList.add('event-name')
-    em.textContent = 'my event'
-
-    a.appendChild(em)
-    li.appendChild(a)
-
-    const ul = document.getElementById('monday-ul')
-    ul.appendChild(li)
-
-    console.log(ul.children[0])
-    console.log(ul.children[4])    
-}
-
-function clearSchedule() {
-    let weekday
-    for (let i = 0; i < 5; i++) {
-        if (i == 0) weekday = document.getElementById("monday-ul")
-        else if (i == 1) weekday = document.getElementById("tuesday-ul")
-        else if (i == 2) weekday = document.getElementById("wednesday-ul")
-        else if (i == 3) weekday = document.getElementById("thursday-ul")
-        else if (i == 4) weekday = document.getElementById("friday-ul")
-
-        if (weekday) {
-            while (weekday.childElementCount > 0) {
-                weekday.removeChild(weekday.firstChild)
-            }
-        }
-
-    }
 }
 
 function addSubjectEvent(item) {

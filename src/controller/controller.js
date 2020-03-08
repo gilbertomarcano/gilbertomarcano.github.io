@@ -11,6 +11,7 @@ class Controller {
 
         this.list = new Ul('selected-subjects')
         this.dropdown = new Dropdown('available-subjects')
+        this.schedule = new ScheduleView('schedule')
     }
 
     init() {
@@ -23,8 +24,6 @@ class Controller {
         console.log('in init', select)
         this.dropdown.load(this.availableSubjects)
         //this.view.loadUl('test-ul', this.model.availableSubjects)
-
-        clearSchedule()
 
     }
 
@@ -90,20 +89,7 @@ class Controller {
 
     }
 
-    start() {
-        const codes = this.list.getData()
-        this.selectedSubjects = this.getSelectedSubjects(codes)
-        this.generator(0)
-
-        // this.model.generateSchedules()
-
-        this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
-
-        runSchedule()
-
-        // //let item = schedule.subjects[0]
-        // //this.view.createSubjectEvent(item)
-    }
+    
 
 
 
@@ -142,10 +128,29 @@ class Controller {
         }
     }
 
+    start() {
+        const codes = this.list.getData()
+        this.selectedSubjects = this.getSelectedSubjects(codes)
+        this.generator(0)
+
+        // this.model.generateSchedules()
+        if (this.generatedSchedules.length === 0) {
+            alert('no schedules generated')
+        } else {
+            this.schedule.create()
+            this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
+            runSchedule()
+        }
+
+        // //let item = schedule.subjects[0]
+        // //this.view.createSubjectEvent(item)
+    }
 
     nextSchedule() {
         if (this.selectedSchedule < this.generatedSchedules.length - 1) {
-            clearSchedule()
+            this.schedule.delete()
+            this.schedule.create()
+
             this.selectedSchedule++
             this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
             runSchedule()
@@ -155,10 +160,21 @@ class Controller {
 
     prevSchedule() {
         if (this.selectedSchedule > 0) {
-            clearSchedule()
+            this.schedule.delete()
+            this.schedule.create()
+            
             this.selectedSchedule--
             this.view.loadSchedule(this.generatedSchedules[this.selectedSchedule])
             runSchedule()
         }
+    }
+
+
+    createSchedule() {
+        
+    }
+
+    deleteSchedule() {
+        this.schedule.delete()
     }
 }
