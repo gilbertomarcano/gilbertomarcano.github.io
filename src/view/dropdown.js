@@ -19,48 +19,26 @@ $('select.dropdown').each(function () {
         list.find('li:contains(' + $(this).find('option:selected').text() + ')').addClass('active');
         $(this).parent().addClass('filled');
     }
-
-    // FIX THIS DUE TO THE SELECT
-    // if (this.getAttribute('selected') == -1) {
-    //     document.getElementById('choice').textContent = "Please choose"
-    //     $(this).parent()[0].getElementsByClassName('active')[0].classList.remove('active')
-    // }
-
 });
 
-$(document).on('click touch', '.selectDropdown ul li a', function (e) {
-    e.preventDefault();
-    var dropdown = $(this).parent().parent().parent();
-    var active = $(this).parent().hasClass('active');
-    var label = active ? dropdown.find('select').attr('placeholder') : $(this).text();
+// $(document).on('click touch', '.selectDropdown ul li a', function (e) {
+//     e.preventDefault();
+//     var dropdown = $(this).parent().parent().parent();
+//     var active = $(this).parent().hasClass('active');
+//     var label = active ? dropdown.find('select').attr('placeholder') : $(this).text();
 
-    dropdown.find('option').prop('selected', false) ;
-    const list = dropdown.find('ul li').removeClass('active');
+//     dropdown.find('option').prop('selected', false) ;
 
-    dropdown.toggleClass('filled', !active);
-    dropdown.children('span').text(label);
+//     dropdown.toggleClass('filled', !active);
+//     dropdown.children('span').text(label);
 
-    if (!active) {
-        dropdown.find('option:contains(' + $(this).text() + ')').prop('selected', true);
-        $(this).parent().addClass('active');
-    }
+//     if (!active) {
+//         dropdown.find('option:contains(' + $(this).text() + ')').prop('selected', true);
+//         $(this).parent().addClass('active');
+//     }
 
-    dropdown.removeClass('open');
-
-    // If select default choose, assign -1 to selected MY CODE
-    // if (document.getElementById('choice').textContent === "Please choose") {
-    //     document.getElementById('available-subjects').setAttribute('selected', -1)
-    // }
-    // else {
-    //     for (let i = 0; i < list.length; i++) {
-    //         if (list[i].className === 'active') {
-    //             document.getElementById('available-subjects').setAttribute('selected', i)
-    //             return
-    //         } 
-    //     }
-    // }
-    
-});
+//     dropdown.removeClass('open');
+// });
 
 $('.dropdown > span').on('click touch', function (e) {
     var self = $(this).parent();

@@ -1,4 +1,4 @@
-function addClassEvent(subjectName, classDay, weekdayid) {
+function addClassEvent(subjectName, sectionId, classDay, weekdayid) {
     const li = document.createElement('li')
     li.classList.add('single-event')
     li.setAttribute('data-start', classDay.start.toString())
@@ -12,10 +12,14 @@ function addClassEvent(subjectName, classDay, weekdayid) {
     const em = document.createElement('em')
     em.classList.add('event-name')
     em.textContent = subjectName
+    
+    const section = document.createElement('em')
+    section.classList.add('event-date')
+    section.textContent = 'S-' + sectionId
 
     a.appendChild(em)
+    a.appendChild(section)
     li.appendChild(a)
-    console.log(weekdayid)
     const ul = document.getElementById(weekdayid)
     ul.appendChild(li)
 }
@@ -32,7 +36,7 @@ function addSubjectEvent(item) {
             else if (i == 3) weekday = 'thursday-ul'
             else if (i == 4) weekday = 'friday-ul'
 
-            addClassEvent(item.subject.name, section.classes[i], weekday)
+            addClassEvent(item.subject.name, section.id, section.classes[i], weekday)
         }
     }
 }

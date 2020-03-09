@@ -1,25 +1,42 @@
 class ScheduleView {
+	/**
+	 * Construct a graphical schedule
+	 * @param {String} id 
+	 */
 	constructor(id) {
 		// Get the id and get the div
         this.id = id
 		this.div = document.getElementById(id)
 	}
 
+	/**
+	 * Create the schedule by creating every single part of it
+	 */
 	create() {
+		// Create the div of the schedule with its classes
 		this.cd_schedule = document.createElement('div')
 		this.cd_schedule.classList.add('cd-schedule')
 		this.cd_schedule.classList.add('loading')
+		
+		// Create its children and append everything to the main div
 		this.createTimeline()
 		this.createEvents()
 		this.createEventModal()
 		this.createCoverLayer()
+
 		this.div.appendChild(this.cd_schedule)
 	}
 
+	/**
+	 * Delete the schedule by removing the child of the main div
+	 */
 	delete() {
 		this.div.removeChild(this.div.firstChild)
 	}
 
+	/**
+	 * Create the timeline row and append it to the schedule div
+	 */
 	createTimeline() {
 		const timeline = document.createElement('div')
 		timeline.setAttribute('id', 'timeline')
@@ -27,7 +44,9 @@ class ScheduleView {
 		
 		const ul = document.createElement('ul')
 
-		for (let i = 7; i < 18; i++) {
+		const firstScheduleHour = 7
+		const lastScheduleHour = 18
+		for (let i = firstScheduleHour; i < lastScheduleHour; i++) {
 			const li_oclock = document.createElement('li')
 			const li_half = document.createElement('li')
 			const span_oclock = document.createElement('span')
@@ -54,6 +73,9 @@ class ScheduleView {
 		this.cd_schedule.appendChild(timeline)
 	}
 
+	/**
+	 * Create the events rows and append it to the schedule div
+	 */
 	createEvents() {
 		const events = document.createElement('div')
 		events.setAttribute('id', 'events')
@@ -140,6 +162,9 @@ class ScheduleView {
 		this.cd_schedule.appendChild(events)
 	}
 
+	/**
+	 * Create the event modal and append it to the schedule div
+	 */
 	createEventModal() {
 		const event_modal = document.createElement('div')
 		event_modal.classList.add('event-modal')
@@ -180,6 +205,9 @@ class ScheduleView {
 		this.cd_schedule.appendChild(event_modal)
 	}
 	
+	/**
+	 * Create the cover layer and append it to the schedule div
+	 */
 	createCoverLayer() {
 		const cover_layer = document.createElement('div')
 		cover_layer.classList.add('cover-layer')

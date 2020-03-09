@@ -1,22 +1,49 @@
+/**
+ * Handle the clicks of the app
+ */
 document.addEventListener('click', function (e) {
+    // Click over the available subjects dropdown
     if (e.target.parentNode.parentNode.parentNode === document.getElementById('available-subjects-div')) {
-        const div = document.getElementById('available-subjects-div')
-        const value = div.getElementsByTagName('span')[0].textContent
-        if (value === 'Please choose') {
-            div.getElementsByTagName('select')[0].setAttribute('selected', -1)
-            return
-        }
 
-        const ul = div.getElementsByTagName('ul')[0]
+        const div = e.target.parentNode.parentNode.parentNode
+        const ul = e.target.parentNode.parentNode
+        const li = e.target.parentNode
+        const active = li.classList.contains('active')
+
+        const value = e.target.textContent
+        const span = document.getElementById('choice')
+
+
         for (let i = 0, len = ul.children.length; i < len; i++) {
-            if (ul.children[i].firstChild.textContent === value) {
-                div.getElementsByTagName('select')[0].setAttribute('selected', i)
-                return
+            if (ul.children[i].classList.contains('active')) {
+                ul.children[i].classList.remove('active')
+                break
             }
         }
 
-        
-      
+        let selected
+        if (!active) {
+            li.classList.add('active')
+            for (let i = 0, len = ul.children.length; i < len; i++) {
+                if(ul.children[i].firstChild.textContent === value) {
+                    selected = i
+                    break
+                }   
+            }
+        } else {
+            selected = '-1'
+        }
+
+        div.classList.remove('open')
+
+        if (selected === '-1') {
+            span.textContent = 'Please choose'
+            div.getElementsByTagName('select')[0].setAttribute('selected', -1)
+            
+        } else {
+            span.textContent = value
+            div.getElementsByTagName('select')[0].setAttribute('selected', selected)
+        }
     }
 
     // Select a subject in the list of selected subjects
