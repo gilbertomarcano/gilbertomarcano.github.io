@@ -21,6 +21,8 @@ $('select.dropdown').each(function () {
     }
 });
 
+// I wrote my own vanilla javascript function in eventListener.js
+
 // $(document).on('click touch', '.selectDropdown ul li a', function (e) {
 //     e.preventDefault();
 //     var dropdown = $(this).parent().parent().parent();
