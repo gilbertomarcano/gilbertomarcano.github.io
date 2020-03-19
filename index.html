@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main page</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="card.css">
+  <link rel="stylesheet" href="author.css">
+
+
 </head>
 
 <body>
@@ -25,11 +29,62 @@
     <h2>This is the <br><span>Motto</span> right here</h2>
   </section>
   <!-- About -->
-  <section class="sec" id="about">
+  <div id="about"></div>
+  <br><br>  
+
+  <section>
+    <div class="container max-width-adaptive-sm">
+      <div class="author author--featured">
+        <br>
+        <a href="#0" class="author__img-wrapper">
+          <img src="author-img.jpg" alt="Author picture">
+        </a>
+        <br>
+        <div class="author__content text-component">
+          <h2>Hi! I'm Gilberto Marcano</h2>
+          <p>Programer, life-term learner. <br>Computer Engineering student.</p>
+        </div>
+
+        <ul class="flex gap-xs flex-wrap justify-center">
+          <li>
+            <a href="#0" class="author__social">
+              <img src="icon1.png">
+            </a>
+          </li>
+
+          <li>
+            <a href="#0" class="author__social">
+              <img src="icon2.png">
+            </a>
+          </li>
+
+          <li>
+            <a href="#0" class="author__social">
+              <img src="icon2.png">
+            </a>
+          </li>
+
+          <li>
+            <a href="#0" class="author__social">
+              <img src="icon2.png">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="sec">
     <div class="content">
       <div class="mxw800p">
         <h3>Who am I</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.</p>
         <a href="#" class="btn">Read Our Story</a>
       </div>
     </div>
@@ -39,7 +94,9 @@
     <div class="content">
       <div class="mxw800p">
         <h3>What I do</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
       </div>
       <div class="services">
         <div class="box">
@@ -48,7 +105,9 @@
           </div>
           <div class="content">
             <h2>Design</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere
+              tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.
+            </p>
           </div>
         </div>
         <div class="box">
@@ -57,7 +116,9 @@
           </div>
           <div class="content">
             <h2>Branding</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere
+              tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.
+            </p>
           </div>
         </div>
         <div class="box">
@@ -66,7 +127,9 @@
           </div>
           <div class="content">
             <h2>Development</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi eaque odit excepturi doloribus et facere
+              tempore? Nam fugiat aperiam error ea quam non! Vel neque esse inventore perspiciatis. Facilis, possimus.
+            </p>
           </div>
         </div>
       </div>
@@ -77,7 +140,9 @@
     <div class="content">
       <div class="mxw800p">
         <h3>Our Achievements</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
       </div>
       <div class="statsBox">
         <div class="box">
@@ -100,33 +165,67 @@
     </div>
   </section>
   <!-- Portfolio -->
+
+
+
+
+
   <section class="sec work" id="portfolio">
     <div class="content">
       <div class="mxw800p">
         <h3>Recent Work</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. </p>
       </div>
-      <div class="workBx">
-        <div class="brand">
-          <a href="schedule.html"><h2>Schedule generator</h2></a>
+      <div class="card-container">
+        <div class="card">
+          <h3 class="title">Schedule Generator</h3>
+          <a href="/schedule.html"><img src="icon1.png"></a>
+
+
+
         </div>
-        <div class="brand">
-          <a href="#"><h2>Brand name</h2></a>
+        <div class="card">
+          <h3 class="title">Card 2</h3>
+          <div class="bar">
+            <div class="emptybar"></div>
+            <div class="filledbar"></div>
+          </div>
+          <div class="circle">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <circle class="stroke" cx="60" cy="60" r="50" />
+            </svg>
+          </div>
         </div>
-        <div class="brand">
-          <a href="#"><h2>Brand name</h2></a>
+        <div class="card">
+          <h3 class="title">Card 3</h3>
+          <div class="bar">
+            <div class="emptybar"></div>
+            <div class="filledbar"></div>
+          </div>
+          <div class="circle">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <circle class="stroke" cx="60" cy="60" r="50" />
+            </svg>
+          </div>
         </div>
-        <div class="brand">
-          <a href="#"><h2>Brand name</h2></a>
+        <div class="card">
+          <h3 class="title">Card 4</h3>
+          <div class="bar">
+            <div class="emptybar"></div>
+            <div class="filledbar"></div>
+          </div>
+          <div class="circle">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <circle class="stroke" cx="60" cy="60" r="50" />
+            </svg>
+          </div>
         </div>
-        <div class="brand">
-          <a href="#"><h2>Brand name</h2></a>
-        </div>
-        <div class="brand">
-          <a href="#"><h2>Brand name</h2></a>
-        </div>
-        
       </div>
+
+    </div>
     </div>
   </section>
   <!-- Contact -->
@@ -144,7 +243,7 @@
               <div class="inputBx50">
                 <input type="text" name="" placeholder="Email Address">
               </div>
-              
+
             </div>
             <div class="row100">
               <div class="inputBx100">
@@ -170,7 +269,7 @@
     </div>
   </section>
   <script type="text/javascript">
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       var header = document.querySelector("header")
       header.classList.toggle("sticky", window.scrollY > 0)
 

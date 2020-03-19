@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
 }
 html
 {
@@ -31,7 +31,7 @@ header
 {
     padding: 5px 100px;
     background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(21,25,33,.1);
 }
 .logo
 {
@@ -69,7 +69,7 @@ header ul li a
 .sticky .logo,
 .sticky ul li a
 {
-    color: #000;
+    color: #151921;
 }
 .banner
 {
@@ -135,7 +135,7 @@ p
     position: relative;
     display: inline-blck;
     padding: 10px 30px;
-    background: #000;
+    background: #151921;
     text-decoration: none;
     color: #fff;
 }
@@ -154,7 +154,7 @@ p
     margin: 0 auto;
     background: #fff;
     padding: 20px;
-    box-shadow: 0 15px 30px rgba(0,0,0,.05);
+    box-shadow: 0 15px 30px rgba(21,25,33,.05);
 }
 .services .box .iconBx
 {
@@ -176,7 +176,7 @@ p
 }
 .stats
 {
-    background: #000;
+    background: #151921;
     padding: 250px;
     margin-top: -250px;
 }
@@ -228,7 +228,7 @@ p
 }
 .workBx .brand:hover
 {
-    background: #000;
+    background: #151921;
 }
 .workBx .brand a
 {
@@ -244,7 +244,7 @@ p
 }
 .contact
 {
-    background: #000;
+    background: #151921;
 }
 .contact h3,
 .contact p
@@ -305,7 +305,7 @@ p
 .contactForm .row100 input[type="submit"]
 {
     background: #fff;
-    color: #000;
+    color: #151921;
     max-width: 100px;
     text-transform: uppercase;
     letter-spacing: 2px;
