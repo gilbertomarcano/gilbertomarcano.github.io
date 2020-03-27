@@ -15,14 +15,15 @@
 <body>
   <!-- Header -->
   <header id="header">
-    <a href="#" class="logo">Logo</a>
+    <a href="#" class="logo"></a>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home" onclick="toggle()">Home</a></li>
+      <li><a href="#about" onclick="toggle()">About</a></li>
+      <!--<li><a href="#services" onclick="toggle()">Services</a></li>-->
+      <li><a href="#portfolio" onclick="toggle()">Portfolio</a></li>
+      <li><a href="#contact" onclick="toggle()">Contact</a></li>
     </ul>
+    <div class="toggle" onclick="toggle()"></div>
   </header>
   <!-- Banner -->
   <section class="banner" id="home">
@@ -30,8 +31,8 @@
   </section>
   <!-- About -->
   <div id="about"></div>
-  <br><br>  
 
+  <br><br>
   <section>
     <div class="container max-width-adaptive-sm">
       <div class="author author--featured">
@@ -90,7 +91,7 @@
     </div>
   </section>
   <!-- Services -->
-  
+
   <!--<section class="sec" id="services">
     <div class="content">
       <div class="mxw800p">
@@ -172,6 +173,7 @@
 
 
   <section class="sec work" id="portfolio">
+    
     <div class="content">
       <div class="mxw800p">
         <h3>Recent Work</h3>
@@ -180,6 +182,7 @@
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. </p>
       </div>
+
       <div class="card-container">
         <div class="card">
           <h3 class="title">Schedule Generator</h3>
@@ -226,7 +229,6 @@
         </div>
       </div>
 
-    </div>
     </div>
   </section>
   <!-- Contact -->
@@ -275,6 +277,11 @@
       header.classList.toggle("sticky", window.scrollY > 0)
 
     })
+
+    function toggle(){
+      var header = document.querySelector("header")
+      header.classList.toggle("active")
+    }
   </script>
 </body>
 
