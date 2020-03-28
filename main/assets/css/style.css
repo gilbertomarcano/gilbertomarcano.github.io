@@ -65,7 +65,7 @@ header ul li a {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url(img/background.jpg);
+  background: url(../img/background.jpg);
   background-size: cover;
   display: flex;
   justify-content: center;

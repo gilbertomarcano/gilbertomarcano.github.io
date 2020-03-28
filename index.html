@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
   <title>Main page</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="card.css">
-  <link rel="stylesheet" href="author.css">
+  <link rel="stylesheet" href="main/assets/css/style.css">
+  <link rel="stylesheet" href="main/assets/css/components/card.css">
+  <link rel="stylesheet" href="main/assets/css/components/author.css">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
       <div class="author author--featured">
         <br>
         <a href="#0" class="author__img-wrapper">
-          <img src="img/author-img.jpg" alt="Author picture">
+          <img src="main/assets/img/author-img.jpg" alt="Author picture">
         </a>
         <br>
         <div class="author__content text-component">
@@ -44,12 +45,12 @@
         <ul class="flex gap-xs flex-wrap justify-center">
           <li>
             <a href="https://github.com/gilbertomarcano" class="author__social">
-              <img src="img/github.png">
+              <img src="main/assets/img/github.png">
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/gilbertomarcano" class="author__social">
-              <img src="img/linkedin.png">
+              <img src="main/assets/img/linkedin.png">
             </a>
           </li>
           <!--<li>
@@ -80,13 +81,13 @@
       <div class="workBx">
         <div class="brand">
           <a href="./schedule.html">
-            <img src="img/schedule-img.png">
+            <img src="main/assets/img/schedule-img.png">
             <h2>UDO Schedule Generator</h2>
           </a>
         </div> 
         <div class="brand">
           <a href="https://github.com/gilbertomarcano/project-iguana">
-            <img src="img/brawludo-img.png">
+            <img src="main/assets/img/brawludo-img.png">
             <h2>Unity Project Brawludo</h2>
           </a>
         </div> <div class="brand">
@@ -130,14 +131,33 @@
         </div>
         <div class="sci">
           <ul>
-            <li><a href="#"><img src="img/github.png"></a></li>
-            <!--<li><a href="#"><img src="img/twitter.png"></a></li>-->
-            <li><a href="#"><img src="img/linkedin.png"></a></li>
+            <li><a href="#"><img src="main/assets/img/github.png"></a></li>
+            <!--<li><a href="#"><img src="main/assets/img/twitter.png"></a></li>-->
+            <li><a href="#"><img src="main/assets/img/linkedin.png"></a></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
+
+
+
+  <div class="custom-checkbox">
+    <input class="custom-checkbox__input" type="checkbox" aria-label="Checkbox label">
+    <div class="custom-checkbox__control" aria-hidden="true"></div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="text/javascript">
     window.addEventListener("scroll", function () {
       var header = document.querySelector("header")
@@ -149,6 +169,14 @@
       header.classList.toggle("active")
     }
   </script>
+
+
+
+
+
+
+
+<script src="node_modules/codyhouse-framework/main/assets/js/util.js"></script>
 </body>
 
 </html>
