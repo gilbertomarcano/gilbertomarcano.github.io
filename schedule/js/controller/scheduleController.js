@@ -64,6 +64,14 @@ class ScheduleController {
     }
 
     /**
+     * Set the subjects with which the generator will work
+     * @param {Array} subjects - the subject list
+     */
+    set(subjects) {
+        this.subjects = subjects;
+    }
+
+    /**
      * Load the current selected subject in the web page
      */
     load() {
