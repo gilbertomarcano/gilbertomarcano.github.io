@@ -56,11 +56,14 @@ class SubjectListView {
         // Create the elements to be appended
         const a = document.createElement('a')
         const div = document.createElement('div')
+        
 
         div.classList.add('subject-list-item')
         
+
         const h1 = document.createElement('h1')
         h1.textContent = name
+        
         const h2 = document.createElement('h2')
         h2.textContent = code
         
@@ -68,6 +71,7 @@ class SubjectListView {
         div.appendChild(h2)
         // Add the listener
         div.addEventListener("click", app.selectItem)
+        div.classList.add('subject')
         // Append the div to the anchor.
         a.appendChild(div)
         // Return the anchor.

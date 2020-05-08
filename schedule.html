@@ -7,15 +7,45 @@
     </script>
     <!--<link rel="stylesheet" href="schedule/css/style.css">-->
     <link rel="stylesheet" href="schedule/css/schedule.css" />
-    <link rel="stylesheet" href="schedule/css/dropdown.css" />
+    <!-- <link rel="stylesheet" href="schedule/css/dropdown.css" /> -->
     <link rel="stylesheet" href="schedule/css/list.css" />
-    <link rel="stylesheet" href="schedule/css/deletebutton.css" />
+    <link rel="stylesheet" href="schedule/css/button.css" />
     <link rel="stylesheet" href="schedule/css/subject-list.css" />
+    <link rel="stylesheet" href="schedule/css/normalize.css" />
 
     <title>Schedule generator</title>
   </head>
+
+  <!-- <button class="trigger">Click here to trigger the modal!</button>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Hello, I am a modal!</h1>
+        </div>
+    </div>
+  
+    <script>
+      var modal = document.querySelector(".modal");
+    var trigger = document.querySelector(".trigger");
+    var closeButton = document.querySelector(".close-button");
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
+    </script> -->
+
   <script src="subject-list.js"></script>
-  <h2>Available subjects</h2>
+  <h1 class="titles">Asignaturas disponibles</h2>
   <br />
 
   <body>
@@ -29,8 +59,8 @@
         </div>
       </div>
     </div>
-
-    <br /><br />
+    <br><br>
+    <h1 class="titles">Asignaturas seleccionadas</h2>
 
     <div class="subject-list-container">
       <div class="subject-list-grid">
@@ -44,7 +74,7 @@
 
     <br /><br />
 
-    <div class="my-center">
+    <div class="center">
       <button class="button" onclick="app.buttonGenerateSchedules()">
         <span>Generate Schedule</span>
       </button>
