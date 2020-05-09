@@ -195,6 +195,10 @@ html, body { height: 100%; }
 		top: 0;
 		left: 0%;
 	}
+
+	.pt-triggers {
+		margin-top: 400px;
+	}
 	
 
 	.pt-triggers .dl-menuwrapper {
