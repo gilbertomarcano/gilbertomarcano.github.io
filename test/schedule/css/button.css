@@ -9,6 +9,43 @@
     padding: 0;
 }
 
+.button-short {
+    --background: #2b3044;
+    --background-hover: #1e2235;
+    --text: #fff;
+    --shadow: rgba(0, 9, 61, .2);
+    --paper: #5c86ff;
+    --paper-lines: #fff;
+    --trash: #e1e6f9;
+    --trash-lines: #bbc1e1;
+    --check: #fff;
+    --check-background: #5c86ff;
+    position: relative;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    min-width: 70px;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--btn, var(--background));
+    box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);
+    transform: scale(var(--scale, 1));
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.button-short span {
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 600;
+    opacity: var(--span-opacity, 1);
+    transform: translateX(var(--span-x, 0)) translateZ(0);
+    transition: transform 0.4s ease var(--span-delay, 0.2s), opacity 0.3s ease var(--span-delay, 0.2s);
+}
+
 .button {
     --background: #2b3044;
     --background-hover: #1e2235;
@@ -25,7 +62,7 @@
     outline: none;
     background: none;
     padding: 10px 24px;
-    border-radius: 7px;
+    border-radius: 12px;
     min-width: 142px;
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;

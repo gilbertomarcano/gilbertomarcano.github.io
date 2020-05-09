@@ -105,8 +105,8 @@ html, body { height: 100%; }
 .pt-triggers {
     margin-top: 460px;
     position: absolute;
-	/* width: 300px; */
-	width: 600px;
+	width: 300px;
+	/* width: 600px; */
     z-index: 999999;
     top: 0;
     left: 50%;
@@ -184,9 +184,18 @@ html, body { height: 100%; }
 }
 
 @media screen and (max-width: 47.4375em) {
-	.pt-page h1 {
+	/* .pt-page h1 {
 		font-size: 3em;
+	} */
+
+	.pt-page {
+		width: 100%;
+		height: 95%;
+		position: absolute;
+		top: 0;
+		left: 0%;
 	}
+	
 
 	.pt-triggers .dl-menuwrapper {
 		display: none;
