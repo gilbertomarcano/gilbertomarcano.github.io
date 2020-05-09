@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 html {
   box-sizing: border-box;
@@ -23,9 +23,7 @@ body {
   /* background: #4f4 */
   background: url(../img/background.jpg);
 }
-body.light {
-  --bg: #171c28;
-}
+
 /* 
 html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -48,7 +46,10 @@ html, body, div, span, applet, object, iframe,
       vertical-align: baseline;
   } */
 
-div, h1, h2, a.subject {
+div,
+h1,
+h2,
+a.subject {
   margin: 0;
   padding: 0;
   border: 0;
@@ -57,12 +58,25 @@ div, h1, h2, a.subject {
   vertical-align: baseline;
 }
 
-h1.titles {
-  font-family: 'Roboto', sans-serif;
-  font-size: 44px;
+h1.title {
+  font-family: "Roboto", sans-serif;
+  font-size: 42px;
+  font-weight: 500;
   overflow: visible;
-  padding: 10px;
+  padding: 15px;
   width: 0 (auto);
   text-align: center;
   color: #2b3044;
+}
+
+.title-center {
+  top: 10px;
+  height: 100%; /* matters */
+  width: 420px;
+  max-height: 420px; /* matters */
+  display: grid; /* matters */
+  overflow: hidden; /* matters */
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
 }
