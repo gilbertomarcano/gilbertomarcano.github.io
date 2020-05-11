@@ -36,7 +36,8 @@ ol {
   margin: 1em 0 0 0;
   padding: 0 3px 0 0;
   width: 3em;
-  height: 68em;
+  /* height: 68em; */
+  height: 44em;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -74,40 +75,44 @@ ol {
   color: white;
 }
 
-.hour__08 {
+.hour__07 {
   top: 3em;
 }
 
-.hour__09 {
+.hour__08 {
   top: 7em;
 }
 
-.hour__10 {
+.hour__09 {
   top: 11em;
 }
 
-.hour__11 {
+.hour__10 {
   top: 15em;
 }
 
-.hour__12 {
+.hour__11 {
   top: 19em;
 }
 
-.hour__13 {
+.hour__12 {
   top: 23em;
 }
 
-.hour__14 {
+.hour__13 {
   top: 27em;
 }
 
-.hour__15 {
+.hour__14 {
   top: 31em;
 }
 
-.hour__16 {
+.hour__15 {
   top: 35em;
+}
+
+.hour--one {
+  height: 4em;
 }
 
 .hour--two {

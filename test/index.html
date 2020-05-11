@@ -5,13 +5,11 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>A Collection of Page Transitions</title>
+	<title>Generador de horarios</title>
 	<meta name="description" content="A Collection of Page Transitions with CSS Animations" />
 	<meta name="keywords" content="page transition, css animation, website, effect, css3, jquery" />
 	<meta name="author" content="Codrops" />
 	<link rel="shortcut icon" href="../favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
-	<link rel="stylesheet" type="text/css" href="css/multilevelmenu.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
 	<link rel="stylesheet" type="text/css" href="css/animations.css" />
 	
@@ -23,7 +21,7 @@
 	<script>
 		document.getElementsByTagName("html")[0].className += " js";
 	</script>
-	<link rel="stylesheet" href="schedule/css/schedule.css" />
+	<!-- <link rel="stylesheet" href="schedule/css/schedule.css" /> -->
 	<link rel="stylesheet" href="schedule/css/button.css" />
 	<link rel="stylesheet" href="schedule/css/subject-list.css" />
 	<link rel="stylesheet" type="text/css" href="table.css" />
@@ -236,128 +234,39 @@
 				</div>
 
 		</div>
+		
 		<div class="pt-page pt-page-3">
-			<div id="schedule"></div>
-		</div>
-		<div class="pt-page pt-page-4">
-			<!-- <h1><span>A collection of</span><strong>Page</strong> Transitions</h1> -->
-			<section class="timetable">
+			<section id="timetable" class="timetable">
 				<ol class="timings">
-				  <li><time datetime="08:00">0800</time></li>
-				  <li>0900</li>
-				  <li>1000</li>
-				  <li>1100</li>
-				  <li>1200</li>
-				  <li>1300</li>
-				  <li>1400</li>
-				  <li>1500</li>
-				  <li>1600</li>
-				  <li>1700</li>
-				  <li>1800</li>
-				  <li>1900</li>
-				  <li>2000</li>
-				  <li>2100</li>
-				  <li>2200</li>
-				  <li>2300</li>
-				  <li>0000</li>
+				  <li><time datetime="07:00">07:00</time></li>
+				  <li>08:00</li>
+				  <li>09:00</li>
+				  <li>10:00</li>
+				  <li>11:00</li>
+				  <li>12:00</li>
+				  <li>13:00</li>
+				  <li>14:00</li>
+				  <li>15:00</li>
+				  <li>16:00</li>
+				  <li>17:00</li>
 				</ol>
-				<ol class="week">
-				  <li class="day">
-					<span class="name">Mon</span>
-					<div class="hour hour__10 class1">
-					  <div class="title">ST2334</div>
-					  <div>LEC[SL1]</div>
-					</div>
-					<div class="hour hour__12 class2">
-					  <div class="title">CFG1010</div>
-					  <div>TUT[02]</div>
-					</div>
-					<div class="hour hour__12 class2">
-					  <div class="title">CFG1010</div>
-					  <div>TUT[02]</div>
-					</div>
-				  </li>
-				  <li class="day">
-					<span class="name">Tue</span>
-					<div class="hour hour__08 hour--two class3">
-					  <div class="title">MA2213</div>
-					  <div>LEC[SL1]</div>
-					</div>
-					<div class="hour hour__12 class4">
-					  <div class="title">CS2020</div>
-					  <div>TUT[02]</div>
-					</div>
-					<div class="hour hour__15 class3">
-					  <div class="title">MA2213</div>
-					  <div>LAB[B04]</div>
-					</div>
-					<div class="hour hour__15 class3">
-					  <div class="title">MA2213</div>
-					  <div>TUT[04]</div>
-					</div>
-				  </li>
-				  <li class="day">
-					<span class="name">Wed</span>
-					<div class="hour hour__10 class4">
-					  <div class="title">CS2020</div>
-					  <div>LEC[01]</div>
-					</div>
-					<div class="hour hour__14 class1">
-					  <div class="title">ST2334</div>
-					  <div>TUT[08]</div>
-					</div>
-				  </li>
-				  <li class="day">
-					<span class="name">Thu</span>
-					<div class="hour hour__10 class1">
-					  <div class="title">ST2334</div>
-					  <div>LEC[SL1]</div>
-					</div>
-					<div class="hour hour__14 hour--two class5">
-					  <div class="title">GES1011</div>
-					  <div>TUT[D3]</div>
-					</div>
-				  </li>
-				  <li class="day">
-					<span class="name">Fri</span>
-					<div class="hour hour__08 class3">
-					  <div class="title">MA2213</div>
-					  <div>LEC[SL1]</div>
-					</div>
-					<div class="hour hour__10 hour--two class4">
-					  <div class="title">CS2020</div>
-					  <div>LEC[01]</div>
-					</div>
-					<div class="hour hour__13 class4">
-					  <div class="title">CS2020</div>
-					  <div>REC[01]</div>
-					</div>
-					<div class="hour hour__14 hour--two class5">
-					  <div class="title">GES1011</div>
-					  <div>LEC[01]</div>
-					</div>
-				  </li>
+				<ol id="week" class="week">
 				</ol>
 			  </section>
 		</div>
+		<div class="pt-page pt-page-4">
+		</div>
 		<div class="pt-page pt-page-5">
-			<h1><span>A collection of</span><strong>Page</strong> Transitions</h1>
+
 		</div>
 		<div class="pt-page pt-page-6">
 			<h1><span>A collection of</span><strong>Page</strong> Transitions</h1>
 		</div>
 	</div>
 
-	<div class="pt-message">
-		<p>Your browser does not support CSS animations.</p>
-	</div>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/jquery.dlmenu.js"></script>
 	<script src="js/pagetransitions.js"></script>
-
-	<!-- JQuery for the dropdown (net::ERR_INTERNET_DISCONECTED) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 	<!-- Model classes -->
 	<script src="schedule/js/model/class.js"></script>
@@ -367,12 +276,8 @@
 	<script src="schedule/js/model/database.js"></script>
 
 	<!-- View classes -->
-	<!--<script src="schedule/js/add.js"></script>  util functions included in the CodyHouse framework -->
-	<script src="schedule/js/view/util.js"></script>
-	<!-- util functions included in the CodyHouse framework -->
-	<!--<script src="src/view/scheduleView.js"></script>-->
-	<script src="schedule/js/view/scheduleView.js"></script>
-	<script src="schedule/js/view/subjectListView.js"></script>
+	<script src="schedule/js/view/subject_list_view.js"></script>
+	<script src="schedule/js/view/timetable_view.js"></script>
 
 	<!-- Controller classes-->
 	<script src="schedule/js/controller/scheduleController.js"></script>

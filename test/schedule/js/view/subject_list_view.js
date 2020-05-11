@@ -57,9 +57,7 @@ class SubjectListView {
         const a = document.createElement('a')
         const div = document.createElement('div')
         
-
         div.classList.add('subject-list-item')
-        
 
         const h1 = document.createElement('h1')
         h1.textContent = name
@@ -70,11 +68,22 @@ class SubjectListView {
         div.appendChild(h1)
         div.appendChild(h2)
         // Add the listener
-        div.addEventListener("click", app.selectItem)
+        div.addEventListener("click", app.selectItemListener)
         div.classList.add('subject')
         // Append the div to the anchor.
         a.appendChild(div)
         // Return the anchor.
         return a
+    }
+
+    search(code) {
+        let searched_subject
+        this.subjects.forEach(subject => {
+            if (subject.code === code) {
+                searched_subject = subject
+                return
+            }
+        })
+        return searched_subject
     }
 }

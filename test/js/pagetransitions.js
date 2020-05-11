@@ -75,11 +75,6 @@ var PageTransitions = (function() {
 			return false;
 		}
 
-		console.log("change page", next);
-
-		
-		
-		
 		var $currPage = $pages.eq( current );
 
 		if (next) {
@@ -99,8 +94,6 @@ var PageTransitions = (function() {
 		}
 
 		isAnimating = true;
-
-		console.log("changePage.current: ", current);
 
 		var $nextPage = $pages.eq( current ).addClass( 'pt-page-current' ),
 			outClass = '', inClass = '';

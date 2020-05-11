@@ -1,10 +1,23 @@
+/**
+ * 
+ * PART 1. FILL THE SUBJECT LIST
+ *    1.1 init()
+ *    1.2 Use availableSubjectsArray as buffer of db 
+ *    1.3 Load the availableSubjectList with the buffer
+ * 
+ * PART 2. SELECT THE SUBJECTS
+ *    2.1 selecItemListener()
+ * 
+ * PART 3. GENERATE THE SCHEDULES
+ *    3.1 scheduleController.init()
+ * 
+ * PART 4. SHOW THAT SCHEDULES IN THE VIEW
+ */
+
 class Controller {
   constructor() {
+    // Controls the data from the schedules
     this.scheduleController = new ScheduleController();
-
-    this.availableSubjectsArray = new Array(); // Useful
-
-    //this.list = new Ul("selected-subjects");
 
     this.availableSubjectsList = new SubjectListView("available-subjects");
     this.selectedSubjectsList = new SubjectListView("selected-subjects");
@@ -16,12 +29,21 @@ class Controller {
   init() {
     // Get data for model from the database
     const data = database_get();
-    database_fill_subject_list(data, this.availableSubjectsArray);
-    this.availableSubjectsList.load(this.availableSubjectsArray);
-    this.selectedSubjectsList.load([]);
+
+    database_fill_subject_list(
+      data,
+      this.availableSubjectsList.subjects
+    )
+
+    this.availableSubjectsList.update()
+    this.selectedSubjectsList.update();
   }
 
-  selectItem(event) {
+  /**
+   * Add an element to the selected subject list
+   * @param {} event 
+   */
+  selectItemListener(event) {
     let item;
     if (event.target.classList.contains("subject-list-item")) {
       // Click on div
@@ -30,11 +52,14 @@ class Controller {
       // Click on h1 or h2
       item = event.target.parentElement;
     }
-	
+
+    // If the item was click from the available subject list
     if (item.parentElement.parentElement.id === 'available-subjects') {
+      // Get the subject from the text and then its subject
       const code = item.children[1].textContent;
-      const subject = app.selectSubject(code);
-      //console.log(subject);
+      const subject = app.availableSubjectsList.search(code)
+
+      // Remove if already selected else add
       if (item.classList.contains("selected")) {
         item.classList.remove("selected");
         app.selectedSubjectsList.remove(subject);
@@ -45,85 +70,18 @@ class Controller {
     }
   }
 
-  selectSubject(code) {
-    for (let i = 0; i < app.availableSubjectsArray.length; i++) {
-      if (app.availableSubjectsArray[i].code === code) {
-        return app.availableSubjectsArray[i];
-      }
-    }
-  }
-
-  getSelectedSubjects(codes) {
-    let selectedSubjects = new Array();
-    codes.forEach((code) => {
-      for (let i = 0; i < this.availableSubjectsArray.length; i++) {
-        if (this.availableSubjectsArray[i].code === code) {
-          selectedSubjects.push(this.availableSubjectsArray[i]);
-          break;
-        }
-      }
-    });
-    return selectedSubjects;
-  }
-
-  /**
-   * Controls which subject is selected
-   */
-  buttonSelectSubject() {
-    // Get the index of the selected subject
-    const index = this.dropdown.getSelectedIndex();
-
-    // Instantiate the selected subject with that index
-    const subject = this.availableSubjectsArray[index];
-
-    if (!subject) {
-      alert("subject is undefined");
-    } else {
-      const code = subject.code;
-      const name = subject.name;
-      const value = "(" + code + ") " + name;
-
-      if (!this.list.inList(value)) {
-        this.list.clear();
-        this.list.append(value);
-        this.list.fill();
-      } else {
-        alert("already in list");
-      }
-    }
-  }
-
-  buttonDeleteSubject() {
-    const selected = parseInt(this.list.getSelected());
-    const button = document.getElementById("delete-button");
-
-    if (selected != -1) {
-      this.list.delete(selected);
-
-      if (!button.classList.contains("delete")) {
-        button.classList.add("delete");
-        setTimeout(() => button.classList.remove("delete"), 3200);
-      }
-      this.list.fill();
-    } else {
-      alert("No subject selected to delete"); // DEBUG ALERT
-    }
-  }
-
   buttonGenerateSchedules() {
-    let schedule = new Schedule(new Array());
-	//this.scheduleController.setSubjects(this.availableSubjectsArray, codes);
-	this.scheduleController.set(app.selectedSubjectsList.subjects);
-    this.scheduleController.generator(0, schedule);
+    this.scheduleController.init(app.selectedSubjectsList.subjects)
 
     if (this.scheduleController.generatedSchedules.length === 0) {
       alert("no schedules generated");
     } else {
-      // alert(
-      //   this.scheduleController.generatedSchedules.length +
-      //     " schedules were generated"
-      // );
-      this.scheduleController.load();
+      alert(
+        this.scheduleController.generatedSchedules.length +
+          " schedules were generated"
+      );
+      console.log(this.scheduleController.generatedSchedules)
+      // this.scheduleController.load();
       // Hidden the generator button
       document.getElementById('button-generator').style.visibility = 'hidden';
     }

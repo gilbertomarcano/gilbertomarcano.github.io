@@ -3,6 +3,10 @@
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+    width: 100%;
 }
 * {
   box-sizing: inherit;
@@ -25,6 +29,10 @@ body {
   margin-right: 0px;
   /* background: #4f4 */
   background: url(../img/background.jpg);
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+    width: 100%;
 }
 
 /* 
