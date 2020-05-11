@@ -138,32 +138,28 @@ class TimetableView {
     }
 }
 
-newsched = new TimetableView('timetable')
-newsched.create()
+// newsched.addEvent({
+//     day: 'wednesday',
+//     start: '12',
+//     duration: 'two',
+//     title: 'my title',
+//     info: 'more info',
+//     color: '3'
+// })
 
-
-newsched.addEvent({
-    day: 'wednesday',
-    start: '12',
-    duration: 'two',
-    title: 'my title',
-    info: 'more info',
-    color: '3'
-})
-
-newsched.addEvent({
-    day: 'wednesday',
-    start: '10',
-    duration: 'two',
-    title: 'my title',
-    info: 'more info',
-    color: '2'
-})
-newsched.addEvent({
-    day: 'thursday',
-    start: '11',
-    duration: 'three',
-    title: 'my title',
-    info: 'more info',
-    color: '1'
-})
+// newsched.addEvent({
+//     day: 'wednesday',
+//     start: '10',
+//     duration: 'two',
+//     title: 'my title',
+//     info: 'more info',
+//     color: '2'
+// })
+// newsched.addEvent({
+//     day: 'thursday',
+//     start: '11',
+//     duration: 'three',
+//     title: 'my title',
+//     info: 'more info',
+//     color: '1'
+// })

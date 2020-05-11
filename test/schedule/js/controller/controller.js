@@ -18,9 +18,13 @@ class Controller {
   constructor() {
     // Controls the data from the schedules
     this.scheduleController = new ScheduleController();
+    this.secheduleIndex = 0;
 
     this.availableSubjectsList = new SubjectListView("available-subjects");
     this.selectedSubjectsList = new SubjectListView("selected-subjects");
+
+
+    this.timetable = new TimetableView('timetable')
   }
 
   /**
@@ -78,20 +82,94 @@ class Controller {
     } else {
       alert(
         this.scheduleController.generatedSchedules.length +
-          " schedules were generated"
+        " schedules were generated"
       );
       console.log(this.scheduleController.generatedSchedules)
-      // this.scheduleController.load();
-      // Hidden the generator button
+
+      this.createTimetable()
+
       document.getElementById('button-generator').style.visibility = 'hidden';
     }
   }
 
+  createTimetable() {
+    let schedule = this.scheduleController.generatedSchedules[this.secheduleIndex]
+
+    this.timetable.create()
+    this.fun(this.timetable, schedule)
+
+  }
+
+  fun(timetable, schedule) {
+    schedule.subjectsAndSections.forEach(el => {
+      let subject = el.subject
+      let section = subject.sections[el.indexOfSection]
+
+      let day
+      for (let i = 0; i < 5; i++) {
+        if (section.classes[i]) {
+          switch (i) {
+            case 0: day = 'monday'
+              break
+            case 1: day = 'tuesday'
+              break
+            case 2: day = 'wednesday'
+              break
+            case 3: day = 'thursday'
+              break
+            case 4: day = 'friday'
+              break
+          }
+
+          let start = zeroPad(section.classes[i].start.hour, 2)
+
+          let duration = section.classes[i].end.hour - section.classes[i].start.hour
+          console.log(start, duration)
+
+          if (duration == 2) {
+            duration = 'two'
+          } else if (duration == 3) {
+            duration = 'three'
+          }
+
+          let title = subject.name
+          let info = subject.code
+
+          timetable.addEvent({
+            day: day,
+            start: start,
+            duration: duration,
+            title: title,
+            info: info,
+            color: '1'
+          })
+        }
+      }
+
+    })
+  }
+
+  
+
+
   buttonNextSchedule() {
-    this.scheduleController.loadNext();
+    if (this.secheduleIndex + 1 != this.scheduleController.generatedSchedules.length) {
+      this.secheduleIndex++;
+      this.timetable.delete()
+      this.createTimetable()
+    }
   }
 
   buttonPrevSchedule() {
-    this.scheduleController.loadPrev();
+    if (this.secheduleIndex > 0) {
+      this.secheduleIndex--;
+      this.timetable.delete()
+      this.createTimetable()
+    }
   }
+}
+
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
 }
