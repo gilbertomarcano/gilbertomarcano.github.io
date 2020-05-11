@@ -113,17 +113,16 @@ class Controller {
   buttonGenerateSchedules() {
     let schedule = new Schedule(new Array());
 	//this.scheduleController.setSubjects(this.availableSubjectsArray, codes);
-	console.log(app.selectedSubjectsList.subjects)
 	this.scheduleController.set(app.selectedSubjectsList.subjects);
     this.scheduleController.generator(0, schedule);
 
     if (this.scheduleController.generatedSchedules.length === 0) {
       alert("no schedules generated");
     } else {
-      alert(
-        this.scheduleController.generatedSchedules.length +
-          " schedules were generated"
-      );
+      // alert(
+      //   this.scheduleController.generatedSchedules.length +
+      //     " schedules were generated"
+      // );
       this.scheduleController.load();
       // Hidden the generator button
       document.getElementById('button-generator').style.visibility = 'hidden';

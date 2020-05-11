@@ -361,7 +361,8 @@ class ScheduleView {
 					//place each event in the grid -> need to set top position and height
 					var start = getScheduleTimestamp($(this).attr('data-start')),
 						duration = getScheduleTimestamp($(this).attr('data-end')) - start;
-	
+						
+					console.log(self.mq())
 					var eventTop = self.eventSlotHeight * (start - self.timelineStart) / self.timelineUnitDuration,
 						eventHeight = self.eventSlotHeight * duration / self.timelineUnitDuration;
 	

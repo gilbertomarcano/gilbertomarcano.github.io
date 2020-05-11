@@ -163,8 +163,12 @@ a {
     display: none;
   }
 }
-
 @media only screen and (min-width: 1000px) {
+  /* .cd-schedule .timeline li {
+    position: relative;
+    height: 50px;
+  } */
+
   .cd-schedule .timeline li::after {
     width: calc(100% - 60px);
     left: 60px;
@@ -316,7 +320,7 @@ a {
     margin-right: 0;
   }
   .cd-schedule .events .single-event a {
-    padding: 1.2em;
+    padding: 0.3em;
   }
   .cd-schedule .events .single-event:last-of-type {
     /* reset style */
@@ -334,6 +338,11 @@ a {
     width: calc(100% - 60px);
     margin-left: 60px;
   }
+
+  .cd-schedule .events .single-event a {
+    padding: 1.2em;
+  }
+  
 }
 
 .cd-schedule.loading .events .single-event {
@@ -351,22 +360,42 @@ a {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.cd-schedule .event-name {
-  font-size: 2.4rem;
-}
-
 @media only screen and (min-width: 100px) {
   .cd-schedule .event-name {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    font-stretch: condensed;
   }
 }
 
+
 .cd-schedule .event-date {
-  /* they are not included in the the HTML but added using JavScript */
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   opacity: 0.7;
-  line-height: 1.2;
-  margin-bottom: 0.2em;
+  line-height: 1;
+  margin-bottom: 1em;
+  margin-top: .4em;
+}
+
+@media only screen and (min-width: 1000px) {
+  .cd-schedule .event-name {
+    font-size: 2rem;
+  }
+
+  .cd-schedule .event-date {
+    /* they are not included in the the HTML but added using JavScript */
+    font-size: 1.4rem;
+    opacity: 0.7;
+    line-height: 1.2;
+    margin-bottom: 0.2em;
+  }
+
+  .cd-schedule .event-date {
+    /* they are not included in the the HTML but added using JavScript */
+    font-size: 1.4rem;
+    opacity: 0.7;
+    line-height: 1;
+    margin-bottom: 0.2em;
+  }
 }
 
 .cd-schedule .single-event[data-event="event-1"],

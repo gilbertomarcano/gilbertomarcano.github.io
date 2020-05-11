@@ -77,7 +77,6 @@ class ScheduleController {
     load() {
         // Get the selected subject with the correct index
         const selectedSchedule = this.generatedSchedules[this.selectedScheduleIndex]
-
         // Load the view schedule
         this.scheduleView.delete()
         this.scheduleView.create()
