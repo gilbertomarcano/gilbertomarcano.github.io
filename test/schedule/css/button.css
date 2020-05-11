@@ -9,6 +9,10 @@
     padding: 0;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .button-short {
     --background: #2b3044;
     --background-hover: #1e2235;

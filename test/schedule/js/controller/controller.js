@@ -125,6 +125,8 @@ class Controller {
           " schedules were generated"
       );
       this.scheduleController.load();
+      // Hidden the generator button
+      document.getElementById('button-generator').style.visibility = 'hidden';
     }
   }
 
