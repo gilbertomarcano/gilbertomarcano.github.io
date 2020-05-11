@@ -20,6 +20,9 @@ body {
   color: #adafb6;
   justify-content: center;
   transition: background 0.3s ease;
+  margin-top: 16px;
+  margin-left: 0px;
+  margin-right: 0px;
   /* background: #4f4 */
   background: url(../img/background.jpg);
 }
