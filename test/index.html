@@ -32,38 +32,10 @@
 </head>
 
 <body>
-	<!-- <div class="pt-triggers">
-		
-
-
-
-		
-	</div>
-	
-	 -->
-	
 	<div id="pt-main" class="pt-perspective">
 		<div class="buttons">
-			<button class="btn-hover color-1">BUTTON</button>
-			<button class="btn-hover color-1">BUTTON</button>
-			<!-- <div class="center">
-				<button id="button-generator" class="button" onclick="app.buttonGenerateSchedules()">
-					<span>Generate Schedule</span>
-				</button>
-			</div>
-			<br>
-			<button class="button-short" id="prevPage">
-				<span><-</span>
-			</button>
-			<button class="button-short" id="nextPage">
-				<span>-></span>
-			</button>
-			<button class="button-short" onclick="app.buttonPrevSchedule()">
-				<span>P</span>
-			</button>
-			<button class="button-short" onclick="app.buttonNextSchedule()">
-				<span>N</span>
-			</button> -->
+			<button id="b1" class="btn-hover color-1" onclick="changeWidth()">SIGUIENTE</button>
+			<button id="b2" class="btn-hover color-1 back-button" style="display: none">BUTTON</button>
 		</div>
 
 		<div class="pt-page pt-page-1">
@@ -122,6 +94,31 @@
 		</div>
 	</div>
 
+	<script>
+		function changeWidth() {
+			let b = document.querySelector('#b1')
+
+			if (!b.classList.contains('back-button')) {
+				b1.classList.add('back-button')
+				b1.classList.add('color-2')
+
+				b1.textContent = 'ATRÁS'
+
+				let b2 = document.querySelector('#b2')
+				setTimeout(() => {  b2.style.display = 'inline'; }, 125);
+			} else {
+				b1.classList.remove('back-button')
+				b1.classList.remove('color-2')
+				b1.textContent = 'SIGUIENTE'
+				let b2 = document.querySelector('#b2')
+				setTimeout(() => {  b2.style.display = 'none'; }, 125);
+			}
+			
+			
+			
+
+		}
+	</script>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
