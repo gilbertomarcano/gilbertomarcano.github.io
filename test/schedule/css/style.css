@@ -24,9 +24,11 @@ body {
   color: #adafb6;
   justify-content: center;
   transition: background 0.3s ease;
-  margin-top: 16px;
+  margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
+  margin-bottom: 0px;
+
   /* background: #4f4 */
   background: #fff;
   /* background: url(../img/background.jpg); */
