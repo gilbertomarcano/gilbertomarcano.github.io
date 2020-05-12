@@ -74,7 +74,6 @@ h1.title {
   font-size: 42px;
   font-weight: 500;
   overflow: visible;
-  padding: 15px;
   width: 0 (auto);
   text-align: center;
   color: #2b3044;
@@ -90,4 +89,14 @@ h1.title {
   position: relative;
   margin: 0 auto;
   padding: 0;
+}
+
+@media screen and (max-width: 47.4375em) {
+  h1.title {
+    line-height: 1;
+    margin-top: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+  }
 }
