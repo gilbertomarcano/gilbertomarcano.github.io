@@ -28,7 +28,8 @@ body {
   margin-left: 0px;
   margin-right: 0px;
   /* background: #4f4 */
-  background: url(../img/background.jpg);
+  background: #fff;
+  /* background: url(../img/background.jpg); */
   overflow-x: hidden;
   overflow-y: hidden;
 
