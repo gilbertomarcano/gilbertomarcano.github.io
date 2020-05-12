@@ -14,6 +14,7 @@
 }
 
 .button-short {
+    z-index: 9999;
     --background: #2b3044;
     --background-hover: #1e2235;
     --text: #fff;
@@ -61,6 +62,7 @@
     --trash-lines: #bbc1e1;
     --check: #fff;
     --check-background: #5c86ff;
+    z-index: 9999;
     position: relative;
     border: none;
     outline: none;
@@ -297,4 +299,10 @@
 }
 *:before, *:after {
     box-sizing: inherit;
+}
+
+.button-container {
+    width: 100%;
+    padding-top: 70vh;
+
 }
