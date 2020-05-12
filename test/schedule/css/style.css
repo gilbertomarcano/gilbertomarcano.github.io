@@ -95,7 +95,7 @@ h1.title {
 @media screen and (max-width: 47.4375em) {
   h1.title {
     line-height: 1;
-    margin-top: 60px;
+    padding-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
     text-align: left;
