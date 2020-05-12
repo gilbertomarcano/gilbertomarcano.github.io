@@ -1,92 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <script>
-      document.getElementsByTagName("html")[0].className += " js";
-    </script>
-    <link rel="stylesheet" href="schedule/css/schedule.css" />
-    <link rel="stylesheet" href="schedule/css/button.css" />
-    <link rel="stylesheet" href="schedule/css/subject-list.css" />
-    <link rel="stylesheet" href="schedule/css/style.css" />
+<html lang="en" class="no-js">
 
-    <title>Schedule generator</title>
-  </head>
-  
-  
-  <h1 class="title">Asignaturas disponibles</h2>
-  <br />
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generador de horarios</title>
+	<meta name="description" content="A Collection of Page Transitions with CSS Animations" />
+	<meta name="keywords" content="page transition, css animation, website, effect, css3, jquery" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="schedule/css/component.css" />
+	<link rel="stylesheet" type="text/css" href="schedule/css/animations.css" />
+	
 
-  <body>
-    <div class="subject-list-container">
-      <div class="subject-list-grid">
-        <div class="subject-list-header">search</div>
-        <div class="subject-list-select" id="available-subjects">
-          <!-- <a href="#">
-          <div class="E">1</div>
-        </a> -->
-        </div>
-      </div>
-    </div>
-    <br><br>
-    <h1 class="title title-center">Asignaturas seleccionadas</h2>
+	<script src="schedule/js/modernizr.custom.js"></script>
 
-    <div class="subject-list-container">
-      <div class="subject-list-grid">
-        <div class="subject-list-select" id="selected-subjects">
-          <!-- <a href="#">
-          <div class="E">1</div>
-        </a> -->
-        </div>
-      </div>
-    </div>
 
-    <br /><br />
 
-    <div class="center">
-      <button class="button" onclick="app.buttonGenerateSchedules()">
-        <span>Generate Schedule</span>
-      </button>
-    </div>
+	<script>
+		document.getElementsByTagName("html")[0].className += " js";
+	</script>
+	<!-- <link rel="stylesheet" href="schedule/css/schedule.css" /> -->
+	<link rel="stylesheet" href="schedule/css/button.css" />
+	<link rel="stylesheet" href="schedule/css/subject-list.css" />
+	<link rel="stylesheet" type="text/css" href="schedule/css/table.css" />
 
-    <br /><br />
+	<link rel="stylesheet" href="schedule/css/style.css" />
 
-    <button class="button" onclick="app.buttonPrevSchedule()">
-      <span>Previous schedule</span>
-    </button>
+	<!-- Note: 323 x 618 is mobile view -->
+</head>
 
-    <span> </span>
+<body>
+	<div id="pt-main" class="pt-perspective">
+		<div id="buttons" class="buttons">
+			<button id="first-button"class="btn-hover color-1" onclick="firstButton()">SIGUIENTE</button>
+			<button id="second-button" class="btn-hover color-1 back-button" style="display: none" onclick="secondButton()">SIGUIENTE</button>
 
-    <button class="button" onclick="app.buttonNextSchedule()">
-      <span>Next Schedule</span>
-    </button>
+			<button class="btn-hover color-1 back-button" onclick="app.buttonPrevSchedule()" style="display: none">ANTERIOR</button>
+			<button class="btn-hover color-1 back-button" onclick="app.buttonNextSchedule()" style="display: none">SIGUIENTE</button>
+		</div>
 
-    <!--<p class="codyhouse">link to the site of Codyhouse: <a
-      href="https://codyhouse.co/gem/schedule-template/">https://codyhouse.co/gem/schedule-template/</a></p>-->
+		<div class="pt-page pt-page-1">
+			<h1 class="title">Asignaturas disponibles</h2>
+				<div class="subject-list-container">
+					<div class="subject-list-grid">
+						<div class="subject-list-header">search</div>
+						<div class="subject-list-select" id="available-subjects">
+							<!-- <a href="#">
+						<div class="E">1</div>
+					  </a> -->
+						</div>
+					</div>
+				</div>
+		</div>
+		<div class="pt-page pt-page-2">
+			<h1 class="title">Asignaturas seleccionadas</h2>
+				<div class="subject-list-container">
+					<div class="subject-list-grid">
+						<div class="subject-list-select" id="selected-subjects">
+							<!-- <a href="#">
+					  <div class="E">1</div>
+					</a> -->
+						</div>
+					</div>
+				</div>
 
-    <div id="schedule"></div>
+		</div>
+		
+		<div class="pt-page pt-page-3">
+			<section id="timetable" class="timetable">
+				<ol class="timings">
+				  <li><time datetime="07:00">07:00</time></li>
+				  <li>08:00</li>
+				  <li>09:00</li>
+				  <li>10:00</li>
+				  <li>11:00</li>
+				  <li>12:00</li>
+				  <li>13:00</li>
+				  <li>14:00</li>
+				  <li>15:00</li>
+				  <li>16:00</li>
+				  <li>17:00</li>
+				</ol>
+				<ol id="week" class="week">
+				</ol>
+			  </section>
+		</div>
+		<div class="pt-page pt-page-4">
+		</div>
+		<div class="pt-page pt-page-5">
 
-    <!-- JQuery for the dropdown (net::ERR_INTERNET_DISCONECTED) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		</div>
+		<div class="pt-page pt-page-6">
+			<h1><span>A collection of</span><strong>Page</strong> Transitions</h1>
+		</div>
+	</div>
 
-    <!-- Model classes -->
-    <script src="schedule/js/model/class.js"></script>
-    <script src="schedule/js/model/section.js"></script>
-    <script src="schedule/js/model/subject.js"></script>
-    <script src="schedule/js/model/schedule.js"></script>
-    <script src="schedule/js/model/database.js"></script>
 
-    <!-- View classes -->
-    <!--<script src="schedule/js/add.js"></script>  util functions included in the CodyHouse framework -->
-    <script src="schedule/js/view/util.js"></script>
-    <!-- util functions included in the CodyHouse framework -->
-    <!--<script src="src/view/scheduleView.js"></script>-->
-    <script src="schedule/js/view/scheduleView.js"></script>
-    <script src="schedule/js/view/subjectListView.js"></script>
 
-    <!-- Controller classes-->
-    <script src="schedule/js/controller/scheduleController.js"></script>
-    <script src="schedule/js/controller/controller.js"></script>
-    <script src="schedule/js/controller/script.js"></script>
-  </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="schedule/js/jquery.dlmenu.js"></script>
+	<script src="schedule/js/pagetransitions.js"></script>
+
+	<!-- Model classes -->
+	<script src="schedule/js/model/class.js"></script>
+	<script src="schedule/js/model/section.js"></script>
+	<script src="schedule/js/model/subject.js"></script>
+	<script src="schedule/js/model/schedule.js"></script>
+	<script src="schedule/js/model/database.js"></script>
+
+	<!-- View classes -->
+	<script src="schedule/js/view/subject_list_view.js"></script>
+	<script src="schedule/js/view/timetable_view.js"></script>
+
+	<!-- Controller classes-->
+	<script src="schedule/js/controller/scheduleController.js"></script>
+	<script src="schedule/js/controller/controller.js"></script>
+	<script src="schedule/js/controller/script.js"></script>
+	<script src="schedule/js/controller/buttonController.js"></script>
+
+</body>
+
 </html>

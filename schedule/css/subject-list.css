@@ -23,14 +23,13 @@ body {
 
 .subject-list-header {
   height: 42px;
-  padding: 10px;
+  padding: 15px;
   background-color: #fff;
 }
 
 .subject-list-select {
   overflow-y: scroll; /* matters */
-  /* text-align: -webkit-center; */
-  padding: 10px;
+  padding: 15px;
 }
 
 .subject-list-select::-webkit-scrollbar {
@@ -40,10 +39,10 @@ body {
 
 .subject-list-item {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 34px;
   background-color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: #99a3ba;
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
@@ -58,9 +57,20 @@ body {
 }
 
 .selected {
-  background-color: #e4ecfa;
+  /* background-color: #e4ecfa; */
+  background-image: linear-gradient(to right, #40e495, #30dd8a );
+  color: #fff;
 }
 
 .subject-list-item:hover {
-  opacity: 0.8;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .5);
+}
+
+
+@media screen and (max-width: 47.4375em) {
+  .subject-list-container {
+    width: 100%;
+    max-height: 60%; /* matters */
+  }
+
 }

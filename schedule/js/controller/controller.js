@@ -1,13 +1,32 @@
+/**
+ * 
+ * PART 1. FILL THE SUBJECT LIST
+ *    1.1 init()
+ *    1.2 Use availableSubjectsArray as buffer of db 
+ *    1.3 Load the availableSubjectList with the buffer
+ * 
+ * PART 2. SELECT THE SUBJECTS
+ *    2.1 selecItemListener()
+ * 
+ * PART 3. GENERATE THE SCHEDULES
+ *    3.1 scheduleController.init()
+ * 
+ * PART 4. SHOW THAT SCHEDULES IN THE VIEW
+ */
+
+let current_page = 0
+
 class Controller {
   constructor() {
+    // Controls the data from the schedules
     this.scheduleController = new ScheduleController();
-
-    this.availableSubjectsArray = new Array(); // Useful
-
-    //this.list = new Ul("selected-subjects");
+    this.secheduleIndex = 0;
 
     this.availableSubjectsList = new SubjectListView("available-subjects");
     this.selectedSubjectsList = new SubjectListView("selected-subjects");
+
+
+    this.timetable = new TimetableView('timetable')
   }
 
   /**
@@ -16,12 +35,21 @@ class Controller {
   init() {
     // Get data for model from the database
     const data = database_get();
-    database_fill_subject_list(data, this.availableSubjectsArray);
-    this.availableSubjectsList.load(this.availableSubjectsArray);
-    this.selectedSubjectsList.load([]);
+
+    database_fill_subject_list(
+      data,
+      this.availableSubjectsList.subjects
+    )
+
+    this.availableSubjectsList.update()
+    this.selectedSubjectsList.update();
   }
 
-  selectItem(event) {
+  /**
+   * Add an element to the selected subject list
+   * @param {} event 
+   */
+  selectItemListener(event) {
     let item;
     if (event.target.classList.contains("subject-list-item")) {
       // Click on div
@@ -30,11 +58,14 @@ class Controller {
       // Click on h1 or h2
       item = event.target.parentElement;
     }
-	
+
+    // If the item was click from the available subject list
     if (item.parentElement.parentElement.id === 'available-subjects') {
+      // Get the subject from the text and then its subject
       const code = item.children[1].textContent;
-      const subject = app.selectSubject(code);
-      //console.log(subject);
+      const subject = app.availableSubjectsList.search(code)
+
+      // Remove if already selected else add
       if (item.classList.contains("selected")) {
         item.classList.remove("selected");
         app.selectedSubjectsList.remove(subject);
@@ -45,94 +76,95 @@ class Controller {
     }
   }
 
-  selectSubject(code) {
-    for (let i = 0; i < app.availableSubjectsArray.length; i++) {
-      if (app.availableSubjectsArray[i].code === code) {
-        return app.availableSubjectsArray[i];
-      }
-    }
-  }
-
-  getSelectedSubjects(codes) {
-    let selectedSubjects = new Array();
-    codes.forEach((code) => {
-      for (let i = 0; i < this.availableSubjectsArray.length; i++) {
-        if (this.availableSubjectsArray[i].code === code) {
-          selectedSubjects.push(this.availableSubjectsArray[i]);
-          break;
-        }
-      }
-    });
-    return selectedSubjects;
-  }
-
-  /**
-   * Controls which subject is selected
-   */
-  buttonSelectSubject() {
-    // Get the index of the selected subject
-    const index = this.dropdown.getSelectedIndex();
-
-    // Instantiate the selected subject with that index
-    const subject = this.availableSubjectsArray[index];
-
-    if (!subject) {
-      alert("subject is undefined");
-    } else {
-      const code = subject.code;
-      const name = subject.name;
-      const value = "(" + code + ") " + name;
-
-      if (!this.list.inList(value)) {
-        this.list.clear();
-        this.list.append(value);
-        this.list.fill();
-      } else {
-        alert("already in list");
-      }
-    }
-  }
-
-  buttonDeleteSubject() {
-    const selected = parseInt(this.list.getSelected());
-    const button = document.getElementById("delete-button");
-
-    if (selected != -1) {
-      this.list.delete(selected);
-
-      if (!button.classList.contains("delete")) {
-        button.classList.add("delete");
-        setTimeout(() => button.classList.remove("delete"), 3200);
-      }
-      this.list.fill();
-    } else {
-      alert("No subject selected to delete"); // DEBUG ALERT
-    }
-  }
-
   buttonGenerateSchedules() {
-    let schedule = new Schedule(new Array());
-	//this.scheduleController.setSubjects(this.availableSubjectsArray, codes);
-	console.log(app.selectedSubjectsList.subjects)
-	this.scheduleController.set(app.selectedSubjectsList.subjects);
-    this.scheduleController.generator(0, schedule);
+    this.scheduleController.init(app.selectedSubjectsList.subjects)
 
     if (this.scheduleController.generatedSchedules.length === 0) {
       alert("no schedules generated");
     } else {
-      alert(
-        this.scheduleController.generatedSchedules.length +
-          " schedules were generated"
-      );
-      this.scheduleController.load();
+      
+      this.createTimetable()
+      document.getElementById('button-generator').style.visibility = 'hidden';
     }
   }
 
+  createTimetable() {
+    let schedule = this.scheduleController.generatedSchedules[this.secheduleIndex]
+
+    this.timetable.create()
+    this.fun(this.timetable, schedule)
+
+  }
+
+  fun(timetable, schedule) {
+    schedule.subjectsAndSections.forEach(el => {
+      let subject = el.subject
+      let section = subject.sections[el.indexOfSection]
+
+      let day
+      for (let i = 0; i < 5; i++) {
+        if (section.classes[i]) {
+          switch (i) {
+            case 0: day = 'monday'
+              break
+            case 1: day = 'tuesday'
+              break
+            case 2: day = 'wednesday'
+              break
+            case 3: day = 'thursday'
+              break
+            case 4: day = 'friday'
+              break
+          }
+
+          let start = zeroPad(section.classes[i].start.hour, 2)
+
+          let duration = section.classes[i].end.hour - section.classes[i].start.hour
+
+          if (duration == 2) {
+            duration = 'two'
+          } else if (duration == 3) {
+            duration = 'three'
+          }
+
+          let title = subject.name
+          let info = subject.code
+
+          timetable.addEvent({
+            day: day,
+            start: start,
+            duration: duration,
+            title: title,
+            info: info,
+            color: '1'
+          })
+        }
+      }
+
+    })
+  }
+
+  
+
+
   buttonNextSchedule() {
-    this.scheduleController.loadNext();
+    if (this.secheduleIndex + 1 != this.scheduleController.generatedSchedules.length) {
+      this.secheduleIndex++;
+      this.timetable.delete()
+      this.createTimetable()
+    }
   }
 
   buttonPrevSchedule() {
-    this.scheduleController.loadPrev();
+    if (this.secheduleIndex > 0) {
+      this.secheduleIndex--;
+      this.timetable.delete()
+      this.createTimetable()
+    }
   }
+}
+
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
 }

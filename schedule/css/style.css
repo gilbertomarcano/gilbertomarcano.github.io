@@ -3,6 +3,10 @@
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+    width: 100%;
 }
 * {
   box-sizing: inherit;
@@ -20,8 +24,18 @@ body {
   color: #adafb6;
   justify-content: center;
   transition: background 0.3s ease;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+
   /* background: #4f4 */
-  background: url(../img/background.jpg);
+  background: #fff;
+  /* background: url(../img/background.jpg); */
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+    width: 100%;
 }
 
 /* 
@@ -63,7 +77,6 @@ h1.title {
   font-size: 42px;
   font-weight: 500;
   overflow: visible;
-  padding: 10px;
   width: 0 (auto);
   text-align: center;
   color: #2b3044;
@@ -79,4 +92,14 @@ h1.title {
   position: relative;
   margin: 0 auto;
   padding: 0;
+}
+
+@media screen and (max-width: 47.4375em) {
+  h1.title {
+    line-height: 1;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+  }
 }
