@@ -1,14 +1,16 @@
+let isAnimating = false
+let current = 0
+
 var PageTransitions = (function() {
 
 	var $main = $( '#pt-main' ),
 		$pages = $main.children( 'div.pt-page' ),
 		$iterate = $( '#iterateEffects' ),
-		$nextPageBtn = $('#nextPage'),
-		$prevPageBtn = $('#prevPage'),
+		$firstButton = $('#first-button'),
+		$secondButton = $('#second-button'),
+		goNext = 1
 		animcursor = 1,
 		pagesCount = $pages.length,
-		current = 0,
-		isAnimating = false,
 		endCurrPage = false,
 		endNextPage = false,
 		animEndEventNames = {
@@ -50,20 +52,32 @@ var PageTransitions = (function() {
 			++animcursor;
 		} );
 
-		$nextPageBtn.on('click', function() {
+		$firstButton.on('click', function() {
+
+			if (goNext) {
+				if (isAnimating) {
+					return false;
+				}
+				animcursor = 17;
+				goNext = 0;
+				changePage(animcursor, true);
+			} else {
+				if (isAnimating) {
+					return false;
+				}
+				animcursor = 24;
+				goNext = 1;
+				changePage(animcursor, false);
+			}
+			
+		} );
+
+		$secondButton.on('click', function() {
 			if (isAnimating) {
 				return false;
 			}
 			animcursor = 17;
 			changePage(animcursor, true);
-		} );
-
-		$prevPageBtn.on('click', function() {
-			if (isAnimating) {
-				return false;
-			}
-			animcursor = 24;
-			changePage(animcursor, false);
 		} );
 
 	}
@@ -100,7 +114,6 @@ var PageTransitions = (function() {
 
 		switch( animation ) {
 			case 17:
-				console.log("CASE 17");
 				outClass = 'pt-page-scaleDown';
 				inClass = 'pt-page-moveFromRight pt-page-ontop';
 				break;

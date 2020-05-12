@@ -14,6 +14,8 @@
  * PART 4. SHOW THAT SCHEDULES IN THE VIEW
  */
 
+let current_page = 0
+
 class Controller {
   constructor() {
     // Controls the data from the schedules
@@ -80,14 +82,8 @@ class Controller {
     if (this.scheduleController.generatedSchedules.length === 0) {
       alert("no schedules generated");
     } else {
-      alert(
-        this.scheduleController.generatedSchedules.length +
-        " schedules were generated"
-      );
-      console.log(this.scheduleController.generatedSchedules)
-
+      
       this.createTimetable()
-
       document.getElementById('button-generator').style.visibility = 'hidden';
     }
   }
@@ -124,7 +120,6 @@ class Controller {
           let start = zeroPad(section.classes[i].start.hour, 2)
 
           let duration = section.classes[i].end.hour - section.classes[i].start.hour
-          console.log(start, duration)
 
           if (duration == 2) {
             duration = 'two'

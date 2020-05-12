@@ -33,9 +33,12 @@
 
 <body>
 	<div id="pt-main" class="pt-perspective">
-		<div class="buttons">
-			<button id="b1" class="btn-hover color-1" onclick="changeWidth()">SIGUIENTE</button>
-			<button id="b2" class="btn-hover color-1 back-button" style="display: none">BUTTON</button>
+		<div id="buttons" class="buttons">
+			<button id="first-button"class="btn-hover color-1" onclick="firstButton()">SIGUIENTE</button>
+			<button id="second-button" class="btn-hover color-1 back-button" style="display: none" onclick="secondButton()">SIGUIENTE</button>
+
+			<button class="btn-hover color-1 back-button" onclick="app.buttonPrevSchedule()" style="display: none">ANTERIOR</button>
+			<button class="btn-hover color-1 back-button" onclick="app.buttonNextSchedule()" style="display: none">SIGUIENTE</button>
 		</div>
 
 		<div class="pt-page pt-page-1">
@@ -94,35 +97,6 @@
 		</div>
 	</div>
 
-	<script>
-		function changeWidth() {
-			let b = document.querySelector('#b1')
-
-			if (!b.classList.contains('back-button')) {
-				b1.classList.add('back-button')
-				b1.classList.add('color-2')
-
-				b1.textContent = 'ATRÁS'
-
-				let b2 = document.querySelector('#b2')
-				setTimeout(() => {b2.style.display = 'inline';}, 110);
-				
-				setTimeout(() => {b2.classList.remove('back-button');}, 160);
-			} else {
-				b1.classList.remove('back-button')
-				b1.classList.remove('color-2')
-				b1.textContent = 'SIGUIENTE'
-				let b2 = document.querySelector('#b2')
-				b2.classList.add('back-button')
-				setTimeout(() => {  b2.style.display = 'none'; }, 290);
-				
-			}
-			
-			
-			
-
-		}
-	</script>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -144,6 +118,8 @@
 	<script src="schedule/js/controller/scheduleController.js"></script>
 	<script src="schedule/js/controller/controller.js"></script>
 	<script src="schedule/js/controller/script.js"></script>
+	<script src="schedule/js/controller/buttonController.js"></script>
+
 </body>
 
 </html>
