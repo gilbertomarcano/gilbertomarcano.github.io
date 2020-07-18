@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="main/assets/css/style.css">
   <link rel="stylesheet" href="main/assets/css/components/card.css">
   <link rel="stylesheet" href="main/assets/css/components/author.css">
+  <link rel="stylesheet" href="main/assets/css/flickity.css" media="screen">
+
+  <link rel="stylesheet" href="main/assets/css/galery.css">
+  
+
 </head>
 
 <body>
@@ -26,6 +31,55 @@
   <!-- Banner -->
   <section class="banner" id="home">
     <h2>Work in progress, come <br><span>later</span></h2>
+  </section>
+
+  <!-- Portfolio -->
+
+  <p><code>wrapAround: true</code></p>
+
+  <!-- Flickity HTML init -->
+  <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+    <div class="gallery-cell"></div>
+    <div class="gallery-cell"></div>
+    <div class="gallery-cell"></div>
+    <div class="gallery-cell"></div>
+    <div class="gallery-cell"></div>
+  </div>
+
+  <section class="sec work" id="portfolio">
+
+    <div class="content">
+      <div class="mxw800p">
+        <h3>Recent Work</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. </p>
+      </div>
+      <div class="workBx">
+        <div class="brand">
+          <a href="https://gilbertomarcano.github.io/schedule-generator/">
+            <img src="main/assets/img/schedule-img.png">
+            <h2>UDO Schedule Generator</h2>
+          </a>
+        </div>
+        <div class="brand">
+          <a href="https://github.com/gilbertomarcano/project-iguana">
+            <img src="main/assets/img/brawludo-img.png">
+            <h2>Unity Project Brawludo</h2>
+          </a>
+        </div>
+        <div class="brand">
+          <a href="https://github.com/gilbertomarcano/memory-representator">
+            <h2>Repo C</h2>
+          </a>
+        </div>
+        <div class="brand">
+          <a href="https://github.com/gilbertomarcano/dollar-tracker-app">
+            <h2>Repo D</h2>
+          </a>
+        </div>
+      </div>
   </section>
   <!-- About -->
   <div id="about"></div>
@@ -66,40 +120,6 @@
         </ul>
       </div>
     </div>
-  </section>
-  <!-- Portfolio -->
-  <section class="sec work" id="portfolio">
-
-    <div class="content">
-      <div class="mxw800p">
-        <h3>Recent Work</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. </p>
-      </div>
-      <div class="workBx">
-        <div class="brand">
-          <a href="https://gilbertomarcano.github.io/schedule-generator/">
-            <img src="main/assets/img/schedule-img.png">
-            <h2>UDO Schedule Generator</h2>
-          </a>
-        </div> 
-        <div class="brand">
-          <a href="https://github.com/gilbertomarcano/project-iguana">
-            <img src="main/assets/img/brawludo-img.png">
-            <h2>Unity Project Brawludo</h2>
-          </a>
-        </div> <div class="brand">
-          <a href="https://github.com/gilbertomarcano/memory-representator">
-            <h2>Repo C</h2>
-          </a>
-        </div> <div class="brand">
-          <a href="https://github.com/gilbertomarcano/dollar-tracker-app">
-            <h2>Repo D</h2>
-          </a>
-        </div> 
-      </div>
   </section>
   <!-- Contact -->
   <section class="sec contact" id="contact">
@@ -175,8 +195,8 @@
 
 
 
-
-<script src="node_modules/codyhouse-framework/main/assets/js/util.js"></script>
+  <script src="main/assets/js/flickity.pkdg.min.js"></script>
+  <script src="node_modules/codyhouse-framework/main/assets/js/util.js"></script>
 </body>
 
 </html>
