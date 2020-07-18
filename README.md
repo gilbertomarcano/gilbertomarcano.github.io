@@ -10,6 +10,7 @@ A simple template that lets you display events on a timeline, as well as organiz
 
 ## Dependencies
 
-This experiment is built upon the [CodyHouse Framework](https://github.com/CodyHouse/codyhouse-framework).
+# Flickity
+Touch, responsive, flickable carousels
 
-Make sure to include both the style.scss and util.js files of the framework.
+All the information about download, package manager and initialization in https://flickity.metafizzy.co/
