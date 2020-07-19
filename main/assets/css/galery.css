@@ -45,18 +45,6 @@ body { font-family: sans-serif; }
   left: 3vh;
 }
 
-/* .gallery-content h1 {
-  line-height: normal;
-  font-size: 40px;
-  background: "";
-}
-
-.gallery-content h2 {
-  line-height: normal;
-  background: "";
-  font-size: 20px;
-} */
-
 /* cell number */
 /* .gallery-cell:before {
   display: block;
@@ -70,17 +58,30 @@ body { font-family: sans-serif; }
 } */
 
 .project-one {
-  background: url(../img/project0.jpg);
+  background: url(../img/project1.jpg);
+  background-size: cover;
+  background-position-x: center;
+}
+
+.project-two {
+  background: url(../img/project2.jpg);
   background-size: cover;
   background-position-x: center;
 }
 
 @media (max-width: 992px) {
   .project-one {
-    background: url(../img/project0-mobile.jpg);
+    background: url(../img/project1-mobile.jpg);
     background-size: cover;
     background-position-x: center;
   }
+
+  .project-two {
+    background: url(../img/project2-mobile.jpg);
+    background-size: cover;
+    background-position-x: center;
+  }
+  
 
   .gallery-content h1 {
     font-size: 38px;
