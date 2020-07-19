@@ -20,6 +20,10 @@ body { font-family: sans-serif; }
   background-size: cover;
 }
 
+.gallery-cell a {
+  text-decoration: none;
+}
+
 .gallery-content {
   display: block;
   text-align: left;
@@ -30,19 +34,32 @@ body { font-family: sans-serif; }
 }
 
 .gallery-content h1 {
-  padding-top: 8vh;
-  margin-left: 3vh;
   font-size: 50px;
   width: 33%;
   line-height: 80%;
+  padding-top: 2vh;
+  padding-left: 3vh;
 }
-
 .gallery-content h2 {
   width: 66%;
   position: absolute;
   font-size: 24px;
-  bottom: 2vh;
-  left: 3vh;
+  bottom: 0px;
+  padding-bottom: 2vh;
+  padding-left: 3vh;
+}
+
+.img-container {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 50px;
+  margin: 2vh;
+}
+
+.img-container img {
+  width: 100%;
+  filter: invert(1);
 }
 
 /* cell number */
@@ -91,6 +108,11 @@ body { font-family: sans-serif; }
     width: 66%;
     font-size: 16px;
   }
+
+  .img-container {
+    width: 42px;
+  }
+  
 }
 
 @media (max-width: 370px) {
