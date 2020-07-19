@@ -37,7 +37,7 @@ body { font-family: sans-serif; }
   font-size: 50px;
   width: 33%;
   line-height: 80%;
-  padding-top: 2vh;
+  padding-top: 7vh;
   padding-left: 3vh;
 }
 .gallery-content h2 {
@@ -86,6 +86,12 @@ body { font-family: sans-serif; }
   background-position-x: center;
 }
 
+.project-three {
+  background: url(../img/project3.jpg);
+  background-size: cover;
+  background-position-x: center;
+}
+
 @media (max-width: 992px) {
   .project-one {
     background: url(../img/project1-mobile.jpg);
@@ -98,9 +104,16 @@ body { font-family: sans-serif; }
     background-size: cover;
     background-position-x: center;
   }
+
+  .project-three {
+    background: url(../img/project3-mobile.jpg);
+    background-size: cover;
+    background-position-x: center;
+  }
   
 
   .gallery-content h1 {
+    padding-top: 9vh;
     font-size: 38px;
   }
   
