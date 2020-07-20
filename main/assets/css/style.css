@@ -1,9 +1,15 @@
 @import url("https:://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /*font-family: 'Poppins', sans-serif;*/
+  font-family: 'Fjalla One', sans-serif;
+  font-weight: 400;
 }
 html {
   scroll-behavior: smooth;
@@ -68,22 +74,35 @@ header ul li a {
   background: url(../img/background.jpg);
   background-size: cover;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+}
+.banner h1 {
+  color: #fff;
+  font-size: 72px;
+  /* text-transform: uppercase; */
+  text-align: left;
+  line-height: 1em;
+}
+.banner h1 span {
+  color: #4978ff;
 }
 .banner h2 {
   color: #fff;
-  font-size: 90px;
-  text-transform: uppercase;
-  text-align: center;
+  font-size: 48px;
+  text-align: left;
   line-height: 1em;
 }
 .banner h2 span {
   color: #4978ff;
 }
+.text-content {
+  margin-left: 8vh;
+}
 .sec {
   background: #fff;
   padding: 100px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -389,5 +408,16 @@ p {
   }
   h3 {
     font-size: 36px;
+  }
+
+  
+  .banner h1 {
+  font-size: 62px;
+  }
+  .banner h2 {
+    font-size: 32px;
+  }
+  .text-content {
+    margin-left: 4vh;
   }
 }

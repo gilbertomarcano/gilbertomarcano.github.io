@@ -36,7 +36,7 @@ body { font-family: sans-serif; }
 .gallery-content h1 {
   font-size: 50px;
   width: 33%;
-  line-height: 80%;
+  line-height: 95%;
   padding-top: 7vh;
   padding-left: 3vh;
 }
@@ -113,7 +113,7 @@ body { font-family: sans-serif; }
   
 
   .gallery-content h1 {
-    padding-top: 9vh;
+    padding-top: 7vh;
     font-size: 38px;
   }
   
