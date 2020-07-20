@@ -92,26 +92,38 @@ body { font-family: sans-serif; }
   background-position-x: center;
 }
 
+.project-four {
+  background: url(../img/project4.jpg);
+  background-size: cover;
+  background-position-x: center;
+}
+
+
 @media (max-width: 992px) {
   .project-one {
     background: url(../img/project1-mobile.jpg);
     background-size: cover;
     background-position-x: center;
   }
-
+  
   .project-two {
     background: url(../img/project2-mobile.jpg);
     background-size: cover;
     background-position-x: center;
   }
-
+  
   .project-three {
     background: url(../img/project3-mobile.jpg);
     background-size: cover;
     background-position-x: center;
   }
   
-
+  .project-four {
+    background: url(../img/project4-mobile.jpg);
+    background-size: cover;
+    background-position-x: center;
+  }
+  
   .gallery-content h1 {
     padding-top: 7vh;
     font-size: 38px;

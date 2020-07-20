@@ -1,4 +1,4 @@
-# Schedule Template
+<!-- # Schedule Template
 
 A simple template that lets you display events on a timeline, as well as organize them in groups (week days, conference rooms etc…).
 
@@ -17,4 +17,4 @@ Touch, responsive, flickable carousels
 CSS Inheritence
 Responsive Design
 
-All the information about download, package manager and initialization in https://flickity.metafizzy.co/
+All the information about download, package manager and initialization in https://flickity.metafizzy.co/ -->
